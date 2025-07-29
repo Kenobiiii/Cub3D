@@ -9,10 +9,10 @@ git push -u origin <nombre-de-tu-rama>  # Sube la rama al remoto y la vincula
 
 2. Antes de empezar a trabajar (Actualizar tu rama)
  ```bash
-git switch V2  # Asegúrate de estar en master/main
-git pull origin V2  # Descarga cambios más recientes de master
+git switch main  # Asegúrate de estar en master/main
+git pull origin main  # Descarga cambios más recientes de master
 git checkout <nombre-de-tu-rama>  # Vuelve a tu rama
-git merge V2  # Fusiona los últimos cambios de master en tu rama
+git merge main  # Fusiona los últimos cambios de master en tu rama
    ```
 
 
@@ -25,8 +25,8 @@ git push origin <nombre-de-tu-rama>
 
 4. Cuando termines y quieras fusionar con master
  ```bash
-git switch V2
-git pull origin V2  # Asegúrate de tener lo último
+git switch main
+git pull origin main  # Asegúrate de tener lo último
 git merge <nombre-de-tu-rama>  # Fusiona tu trabajo en master
-git push origin V2  # Sube los cambios al repositorio
+git push origin main  # Sube los cambios al repositorio
  ```
