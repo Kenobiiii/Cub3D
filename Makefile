@@ -10,6 +10,7 @@ SRCS = src/main.c \
        src/parsing/parse.c \
        src/parsing/config_elements.c \
        src/parsing/config_utils.c \
+       src/parsing/config_helpers.c \
        src/parsing/color_utils.c \
        src/parsing/map_reader.c \
        src/parsing/map_validator.c \

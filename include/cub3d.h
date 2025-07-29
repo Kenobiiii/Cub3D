@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/07/29 14:20:00 by paromero         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:04:31 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,11 @@ int			validate_internal_spaces(int i, int len, t_config *config);
 // config_utils.c
 int			validate_path(char *path);
 int			validate_color_string(char *color_str);
+
+// config_helpers.c
+int			is_texture_line(char *line);
+int			is_color_line(char *line);
+int			store_color_value(char *line, int color, t_config *config);
+int			store_texture_path(char *line, char *path, t_config *config);
 
 #endif
