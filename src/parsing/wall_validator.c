@@ -6,79 +6,58 @@
 /*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/07/29 13:17:48 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:17:32 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	validate_boundary_rows(int i, int j, int len, t_config *config)
+// Returns the character at (i, j) or ' ' if out of bounds
+static char	get_map_char(t_config *config, int i, int j)
 {
-	while (j < len)
-	{
-		if (config->map.grid[i][j] != '1' && config->map.grid[i][j] != ' ')
-			return (-1);
-		j++;
-	}
-	return (0);
+	if (i < 0 || i >= config->map.height)
+		return (' ');
+	if (j < 0 || j >= (int)ft_strlen(config->map.grid[i]))
+		return (' ');
+	return (config->map.grid[i][j]);
 }
 
-static int	validate_internal_rows(int i, int j, int len, t_config *config)
+// Checks that '0' and player are not adjacent to spaces or out of bounds
+static int	validate_cell_closed(t_config *config, int i, int j)
 {
-	if (j < len && config->map.grid[i][j] != '1')
-		return (-1);
-	if (len > 0 && config->map.grid[i][len - 1] != '1')
-		return (-1);
-	while (j < len)
+	char	c;
+	char	up_char;
+	char	down_char;
+	char	left_char;
+	char	right_char;
+
+	c = get_map_char(config, i, j);
+	if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
-		if (config->map.grid[i][j] == ' ')
+		up_char    = get_map_char(config, i - 1, j);
+		down_char  = get_map_char(config, i + 1, j);
+		left_char  = get_map_char(config, i, j - 1);
+		right_char = get_map_char(config, i, j + 1);
+		if (up_char == ' ' || down_char == ' ' || left_char == ' ' || right_char == ' ')
 		{
-			if (j > 0 && config->map.grid[i][j - 1] != '1'
-				&& config->map.grid[i][j - 1] != ' ')
-				return (-1);
-			if (j + 1 < len && config->map.grid[i][j + 1] != '1'
-				&& config->map.grid[i][j + 1] != ' ')
-				return (-1);
+			ft_putstr_fd("Error: Map is not properly closed by walls\n", 2);
+			return (-1);
 		}
-		j++;
 	}
 	return (0);
 }
 
-static int	validate_row(int i, t_config *config)
+// Main wall validation function
+int validate_walls(t_config *config)
 {
-	int	j;
-	int	len;
-
-	j = 0;
-	len = ft_strlen(config->map.grid[i]);
-	while (j < len && config->map.grid[i][j] == ' ')
-		j++;
-	if (i == 0 || i == config->map.height - 1)
+	int i, j;
+	for (i = 0; i < config->map.height; i++)
 	{
-		if (validate_boundary_rows(i, j, len, config) == -1)
-			return (-1);
+		for (j = 0; j < (int)ft_strlen(config->map.grid[i]); j++)
+		{
+			if (validate_cell_closed(config, i, j) == -1)
+				return -1;
+		}
 	}
-	else
-	{
-		if (validate_internal_rows(i, j, len, config) == -1)
-			return (-1);
-	}
-	if (validate_length_rules(i, len, config) == -1)
-		return (-1);
-	return (0);
-}
-
-int	validate_walls(t_config *config)
-{
-	int	i;
-
-	i = 0;
-	while (i < config->map.height)
-	{
-		if (validate_row(i, config) == -1)
-			return (-1);
-		i++;
-	}
-	return (0);
+	return 0;
 }

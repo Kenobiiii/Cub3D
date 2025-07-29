@@ -6,7 +6,7 @@
 /*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/07/29 13:23:56 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:17:27 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int			read_map(int fd, t_config *config);
 // Validación del mapa
 int			validate_map(t_config *config);
 int			validate_walls(t_config *config);
+int			validate_player(t_config *config);
 
 // Utilidades de color
 int			parse_rgb(char *color_str);
@@ -126,6 +127,9 @@ void		free_array(char **array);
 // wall_utils.c
 int			validate_extra_chars(int i, int start, int len, t_config *config);
 int			validate_length_rules(int i, int len, t_config *config);
+int			find_first_char(int i, int len, t_config *config);
+int			find_last_char(int i, int len, t_config *config);
+int			validate_internal_spaces(int i, int len, t_config *config);
 
 // config_utils.c
 int			validate_path(char *path);

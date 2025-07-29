@@ -6,7 +6,17 @@ CFLAGS = -Wall -Werror -Wextra
 
 USER = paromero
 OBJ_DIR = objs
-SRCS = src/main.c
+SRCS = src/main.c \
+       src/parsing/parse.c \
+       src/parsing/config_elements.c \
+       src/parsing/config_utils.c \
+       src/parsing/color_utils.c \
+       src/parsing/map_reader.c \
+       src/parsing/map_validator.c \
+       src/parsing/player_validator.c \
+       src/parsing/wall_validator.c \
+       src/parsing/wall_utils.c \
+       src/parsing/memory_utils.c
 
 OBJS = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
@@ -15,8 +25,8 @@ NAME = cub3D
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-INCLUDES = -I./$(LIBFT_DIR) -I/usr/include/readline
-LIBS = -L./$(LIBFT_DIR) -lft -lreadline -lncurses
+INCLUDES = -I./$(LIBFT_DIR) -I./include
+LIBS = -L./$(LIBFT_DIR) -lft
 
 GREEN = \033[1;32m
 RESET = \033[0m

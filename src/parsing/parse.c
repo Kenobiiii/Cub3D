@@ -6,7 +6,7 @@
 /*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/07/29 12:29:32 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:13:22 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@ static int	validate_file_extension(char *filename)
 
 	len = ft_strlen(filename);
 	if (len < 5)
+	{
+		ft_putstr_fd("Error: File name too short\n", 2);
 		return (-1);
+	}
 	if (ft_strncmp(filename + len - 4, ".cub", 4) != 0)
+	{
+		ft_putstr_fd("Error: File must have .cub extension\n", 2);
 		return (-1);
+	}
 	return (0);
 }
 
@@ -36,6 +42,7 @@ static t_config	init_config(void)
 	config.ea_path = NULL;
 	config.floor_color = -1;
 	config.ceiling_color = -1;
+	config.map_path = NULL;
 	config.map.grid = NULL;
 	config.map.width = 0;
 	config.map.height = 0;
@@ -63,11 +70,20 @@ static int	open_file(char *filename)
 static int	process_file(int fd, t_config *config)
 {
 	if (read_config_elements(fd, config) == -1)
+	{
+		ft_putstr_fd("Error: Invalid configuration elements\n", 2);
 		return (-1);
+	}
 	if (read_map(fd, config) == -1)
+	{
+		ft_putstr_fd("Error: Invalid map\n", 2);
 		return (-1);
+	}
 	if (validate_map(config) == -1)
+	{
+		ft_putstr_fd("Error: Map validation failed\n", 2);
 		return (-1);
+	}
 	return (0);
 }
 
@@ -79,15 +95,18 @@ t_config	parse_file(char *filename)
 
 	config = init_config();
 	if (validate_file_extension(filename) == -1)
-	{
-		ft_putstr_fd("Error: File must have .cub extension\n", 2);
 		return (config);
-	}
 	fd = open_file(filename);
 	if (fd == -1)
 		return (config);
 	if (process_file(fd, &config) == -1)
+	{
+		close(fd);
+		if (config.map.grid)
+			free_array(config.map.grid);
+		config.map.grid = NULL;
 		return (config);
+	}
 	close(fd);
 	return (config);
 }
