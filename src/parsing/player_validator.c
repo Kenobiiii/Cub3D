@@ -6,7 +6,7 @@
 /*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 14:15:12 by anggalle          #+#    #+#             */
-/*   Updated: 2025/07/29 14:17:24 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/07/29 15:55:33 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,29 @@ static int	count_and_store_player(t_config *config)
 int	validate_player(t_config *config)
 {
 	int	player_count;
+	int	px;
+	int	py;
+	int	rowlen;
 
 	player_count = count_and_store_player(config);
-	if (player_count == 0)
+	if (player_count == -1)
 	{
-		ft_putstr_fd("Error: No player found in map\n", 2);
+		ft_putstr_fd("Error: Invalid player configuration\n", 2);
 		return (-1);
 	}
-	if (player_count > 1)
+	if (player_count != 1)
 	{
-		ft_putstr_fd("Error: Multiple players found in map\n", 2);
+		ft_putstr_fd("Error: Map must have exactly one player\n", 2);
+		return (-1);
+	}
+	px = (int)config->player_start.x;
+	py = (int)config->player_start.y;
+	rowlen = ft_strlen(config->map.grid[py]);
+	printf("DEBUG: Player at (%d, %d) of rowlen %d, map height %d\n", px, py, rowlen, config->map.height);
+	if (px == 0 || py == 0 || py == config->map.height - 1
+		|| px == rowlen - 1)
+	{
+		ft_putstr_fd("Error: Player cannot be on the edge of the map\n", 2);
 		return (-1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/07/29 14:13:22 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:29:01 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static int	ft_atoi_safe(char *str)
 
 	result = 0;
 	i = 0;
-	// Skip leading spaces
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
@@ -33,7 +32,6 @@ static int	ft_atoi_safe(char *str)
 		}
 		i++;
 	}
-	// Skip trailing spaces
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	if (str[i] != '\0')
@@ -44,11 +42,26 @@ static int	ft_atoi_safe(char *str)
 	return (result);
 }
 
+// Validates RGB parts array
+static int	validate_rgb_parts(char **parts)
+{
+	int	count;
+
+	count = 0;
+	while (parts[count])
+		count++;
+	if (count != 3)
+	{
+		ft_putstr_fd("Error: RGB must have exactly 3 values (R,G,B)\n", 2);
+		return (-1);
+	}
+	return (0);
+}
+
 // Extracts RGB values from "R,G,B" string
 static int	extract_rgb_values(char *color_str, int *r, int *g, int *b)
 {
 	char	**parts;
-	int		count;
 
 	parts = ft_split(color_str, ',');
 	if (!parts)
@@ -56,12 +69,8 @@ static int	extract_rgb_values(char *color_str, int *r, int *g, int *b)
 		ft_putstr_fd("Error: Memory allocation failed\n", 2);
 		return (-1);
 	}
-	count = 0;
-	while (parts[count])
-		count++;
-	if (count != 3)
+	if (validate_rgb_parts(parts) == -1)
 	{
-		ft_putstr_fd("Error: RGB must have exactly 3 values (R,G,B)\n", 2);
 		free_array(parts);
 		return (-1);
 	}
