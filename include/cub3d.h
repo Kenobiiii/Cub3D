@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/07/29 10:02:38 by paromero         ###   ########.fr       */
+/*   Updated: 2025/07/29 11:58:25 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,35 +57,7 @@ typedef struct s_player {
 } t_player;
 
 /* ========================================================================= */
-/* 📌 Celda del mapa extendido (si usas estructura por celda en bonus) */
-/* ========================================================================= */
-typedef enum e_cell_type {
-	CELL_EMPTY,
-	CELL_WALL,
-	CELL_DOOR_CLOSED,
-	CELL_DOOR_OPEN
-} t_cell_type;
-
-/* ========================================================================= */
-/* 📌 Puerta interactiva: estado, dirección y animación */
-/* ========================================================================= */
-typedef struct s_door {
-	t_vector2i pos;       // Posición en el grid
-	int is_open;          // Estado lógico
-	float anim_state;     // Progreso de la animación (0.0 → 1.0)
-	int direction;        // 0 = vertical, 1 = horizontal
-} t_door;
-
-/* ========================================================================= */
-/* 📌 Lista de puertas: para control dinámico de múltiples instancias */
-/* ========================================================================= */
-typedef struct s_door_list {
-	t_door door;
-	struct s_door_list *next;
-} t_door_list;
-
-/* ========================================================================= */
-/* 📌 Datos del mapa original: grid, dimensiones y parsing info */
+/* 📌 Datos del mapa: grid y dimensiones */
 /* ========================================================================= */
 typedef struct s_map {
 	char **grid;         // Matriz del mapa original
@@ -97,19 +69,19 @@ typedef struct s_map {
 /* 📌 Configuración general parseada desde .cub */
 /* ========================================================================= */
 typedef struct s_config {
-	char *no_path;
-	char *so_path;
-	char *we_path;
-	char *ea_path;
-	int floor_color;
-	int ceiling_color;
-	t_map map;
-	t_vector2f player_start;
-	char player_dir;       // N, S, E, W
+	char *no_path;       // Textura pared norte
+	char *so_path;       // Textura pared sur
+	char *we_path;       // Textura pared oeste
+	char *ea_path;       // Textura pared este
+	int floor_color;     // Color del suelo
+	int ceiling_color;   // Color del techo
+	t_map map;          // Datos del mapa
+	t_vector2f player_start;  // Posición inicial del jugador
+	char player_dir;     // Dirección inicial: N, S, E, W
 } t_config;
 
 /* ========================================================================= */
-/* 📌 Control general del motor y render: mlx, texturas, jugador, puertas */
+/* 📌 Control general del motor y render: mlx, texturas, jugador */
 /* ========================================================================= */
 typedef struct s_game {
 	void *mlx;
@@ -118,12 +90,6 @@ typedef struct s_game {
 	t_config config;          // Configuración base parseada
 	t_player player;          // Jugador activo
 	t_texture textures[4];    // NO, SO, WE, EA orden: 0=N,1=S,2=W,3=E
-
-	t_texture door_texture;   // Textura para puertas
-	t_texture hud;            // HUD o interfaz opcional
-
-	t_door_list *doors;       // Lista dinámica de puertas
 } t_game;
-
 
 #endif
