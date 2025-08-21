@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/07/29 16:04:31 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/08/21 18:51:08 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdio.h>
 # include <fcntl.h>
+# include "../MLX/include/MLX42/MLX42.h"
 
 /* ========================================================================= */
 /* 📌 Vector entero 2D: para coordenadas de mapa, grillas, píxeles exactos */
@@ -40,13 +41,9 @@ typedef struct s_vector2f
 /* ========================================================================= */
 typedef struct s_texture
 {
-    void    *img;
-    char    *addr;
+    mlx_image_t    *img;
     int     width;
     int     height;
-    int     bpp;
-    int     line_len;
-    int     endian;
 }   t_texture;
 
 /* ========================================================================= */
@@ -125,8 +122,7 @@ typedef struct s_config
 /* ========================================================================= */
 typedef struct s_game
 {
-    void        *mlx;           // Puntero MLX
-    void        *win;           // Ventana MLX
+    mlx_t        *mlx;           // Puntero MLX
     t_texture   screen;         // Buffer de pantalla para renderizar
     t_config    config;         // Configuración parseada
     t_player    player;         // Estado del jugador
@@ -177,5 +173,30 @@ int			is_texture_line(char *line);
 int			is_color_line(char *line);
 int			store_color_value(char *line, int color, t_config *config);
 int			store_texture_path(char *line, char *path, t_config *config);
+
+/* ========================================================================= */
+/* 📌 Funciones MLX42 personalizadas */
+/* ========================================================================= */
+
+// Inicialización y cierre
+int			init_mlx42(t_game *game);
+int			close_game(t_game *game);
+
+// Manipulación de píxeles
+void		put_pixel(mlx_image_t *img, int x, int y, int color);
+int			get_pixel(mlx_image_t *img, int x, int y);
+int			create_rgba(int r, int g, int b, int a);
+
+// Game loop y eventos
+void		handle_keypress(mlx_key_data_t keydata, void *param);
+void		handle_close(void *param);
+
+// Carga de texturas
+int			load_textures(t_game *game);
+int			load_single_texture(t_game *game, char *path, int index);
+void		cleanup_textures(t_game *game);
+
+// Inicialización del jugador
+void		init_player(t_game *game);
 
 #endif
