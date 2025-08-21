@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/21 18:51:08 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/21 20:38:41 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,13 @@ int			close_game(t_game *game);
 void		put_pixel(mlx_image_t *img, int x, int y, int color);
 int			get_pixel(mlx_image_t *img, int x, int y);
 int			create_rgba(int r, int g, int b, int a);
+
+// Renderizado básico
+void		clear_screen(mlx_image_t *img);
+void		draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color);
+
+// Renderizado principal
+void		render_images(t_game *game);
 
 // Game loop y eventos
 void		handle_keypress(mlx_key_data_t keydata, void *param);

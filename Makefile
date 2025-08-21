@@ -25,7 +25,9 @@ SRCS = src/main.c \
        src/parsing/wall_utils.c \
        src/parsing/memory_utils.c \
        src/engine/mlx_init.c \
-       src/engine/texture_init.c
+       src/engine/texture_init.c \
+       src/engine/render_basic.c \
+       src/engine/render_images.c
 
 OBJS = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
