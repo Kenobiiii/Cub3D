@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 20:00:52 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/21 20:36:29 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/22 10:24:14 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	convert_rgb_to_mlx(int rgb_color)
 	return (create_rgba(r, g, b, 255));
 }
 
-void	render_images(t_game *game)
+void	render_background(t_game *game)
 {
 	int	floor_color;
 	int	ceiling_color;

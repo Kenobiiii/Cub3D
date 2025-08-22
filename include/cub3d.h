@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/21 20:38:41 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/22 10:21:36 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ void		clear_screen(mlx_image_t *img);
 void		draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color);
 
 // Renderizado principal
-void		render_images(t_game *game);
+void		render_background(t_game *game);
 
 // Game loop y eventos
 void		handle_keypress(mlx_key_data_t keydata, void *param);
