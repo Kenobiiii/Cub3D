@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 12:28:37 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/23 19:35:02 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/23 20:06:47 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	validate_player_position(t_game *game)
 
 void	init_player(t_game *game)
 {
-	game->player.pos.x = game->config.player_start.x;
-	game->player.pos.y = game->config.player_start.y;
+	game->player.pos.x = game->config.player_start.x + 0.5f;
+	game->player.pos.y = game->config.player_start.y + 0.5f;
 	set_direction_vectors(&game->player, game->config.player_dir);
 	game->player.move_speed = 0.05f;
 	game->player.rot_speed = 0.03f;
