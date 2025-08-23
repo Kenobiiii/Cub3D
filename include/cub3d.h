@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/22 10:21:36 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/23 19:53:48 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct s_player
 {
     t_vector2f  pos;            // Posición actual en el mundo
     t_vector2f  dir;            // Vector dirección (hacia donde mira)
-    t_vector2f  plane;          // Plano de la cámara (perpendicular a dir)
+    t_vector2f  fov;            // Campo de visión (field of view)
     float       move_speed;     // Velocidad de movimiento
     float       rot_speed;      // Velocidad de rotación
 }   t_player;
@@ -190,9 +190,12 @@ int			create_rgba(int r, int g, int b, int a);
 // Renderizado básico
 void		clear_screen(mlx_image_t *img);
 void		draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color);
+void		put_texture_pixel(t_game *game, int x, int y, t_texture *texture, 
+				int tex_x, int tex_y);
 
 // Renderizado principal
 void		render_background(t_game *game);
+void		render_frame(t_game *game);
 
 // Game loop y eventos
 void		handle_keypress(mlx_key_data_t keydata, void *param);
@@ -205,5 +208,33 @@ void		cleanup_textures(t_game *game);
 
 // Inicialización del jugador
 void		init_player(t_game *game);
+void		set_direction_vectors(t_player *player, char direction);
+int			validate_player_position(t_game *game);
+
+// Sistema de input y movimiento
+void		update_input(t_game *game);
+void		update_player_movement(t_game *game);
+void		update_player_rotation(t_game *game);
+void		rotate_vectors(t_vector2f *dir, t_vector2f *fov, float angle);
+void		game_update(void *param);
+
+// Collision detection
+int			is_valid_position(t_game *game, float x, float y);
+void		move_player_safe(t_game *game, float new_x, float new_y);
+
+// Raycasting y DDA
+void		init_ray(t_ray *ray, t_game *game, int x);
+void		calculate_delta_dist(t_ray *ray);
+void		calculate_step_and_side_dist(t_ray *ray);
+void		perform_dda(t_ray *ray, t_game *game);
+void		calculate_wall_distance(t_ray *ray);
+void		determine_wall_texture(t_ray *ray);
+void		cast_single_ray(t_ray *ray, t_game *game, int x);
+
+// Renderizado de paredes
+void		calculate_wall_x(t_ray *ray);
+void		calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start, 
+				int *draw_end);
+void		draw_wall_column(t_game *game, t_ray *ray, int x);
 
 #endif

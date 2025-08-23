@@ -1,4 +1,13 @@
-/* ************************************************************************** */
+/* *************************************************************	if (load_textures(game) == -1)
+	{
+		ft_putstr_fd("Error: Failed to load textures\n", 2);
+		mlx_terminate(game->mlx);
+		return (-1);
+	}
+	
+	init_player(game);
+	
+	render_images(game);***** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
@@ -69,7 +78,12 @@ int init_mlx42(t_game *game)
 		return (-1);
 	}
 	
+	init_player(game);
+	
 	render_background(game);
+	
+	mlx_loop_hook(game->mlx, game_update, game);
+	mlx_loop(game->mlx);
 	
 	printf("✅ MLX42 initialized successfully!\n");
 	printf("   Window size: %dx%d\n", game->win_width, game->win_height);

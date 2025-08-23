@@ -27,7 +27,12 @@ SRCS = src/main.c \
        src/engine/mlx_init.c \
        src/engine/texture_init.c \
        src/engine/render_basic.c \
-       src/engine/render_images.c
+       src/engine/render_images.c \
+       src/engine/player_init.c \
+       src/engine/input_system.c \
+       src/engine/raycasting.c \
+       src/engine/raycasting_dda.c \
+       src/engine/wall_rendering.c
 
 OBJS = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 

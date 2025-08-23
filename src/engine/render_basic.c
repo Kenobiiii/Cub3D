@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 20:00:44 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/21 20:38:47 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/23 19:53:48 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,16 @@ void	draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color)
 		}
 		y++;
 	}
+}
+
+void	put_texture_pixel(t_game *game, int x, int y, t_texture *texture, 
+	int tex_x, int tex_y)
+{
+	int	color;
+
+	if (tex_x < 0 || tex_x >= (int)texture->width 
+		|| tex_y < 0 || tex_y >= (int)texture->height)
+		return ;
+	color = get_pixel(texture->img, tex_x, tex_y);
+	put_pixel(game->screen.img, x, y, color);
 }
