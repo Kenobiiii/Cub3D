@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_rendering.c                                   :+:      :+:    :+:   */
+/*   wall_rendering_fixed.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 19:53:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/24 20:27:51 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/24 20:31:03 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ void	draw_wall_column(t_game *game, t_ray *ray, int x)
 	int	tex_x;
 
 	tex_x = calculate_tex_x(game, ray);
-	draw_texture_column(game, ray, x, tex_x);
+	draw_texture_loop(game, ray, x, tex_x);
 }

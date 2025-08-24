@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/24 19:24:33 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/24 20:31:03 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ typedef struct s_texture
     int     width;
     int     height;
 }   t_texture;
+
+/* ========================================================================= */
+/* 📌 Parámetros de textura: para funciones con múltiples argumentos */
+/* ========================================================================= */
+typedef struct s_texture_params
+{
+    t_texture   *texture;
+    int         tex_x;
+    int         tex_y;
+}   t_texture_params;
 
 /* ========================================================================= */
 /* 📌 Rayo para raycasting: información completa del algoritmo DDA */
@@ -193,8 +203,9 @@ int			create_rgba(int r, int g, int b, int a);
 // Renderizado básico
 void		clear_screen(mlx_image_t *img);
 void		draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color);
-void		put_texture_pixel(t_game *game, int x, int y, t_texture *texture, 
-				int tex_x, int tex_y);
+void		put_texture_pixel(t_game *game, int x, int y, t_texture_params *params);
+void		draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x);
+void		draw_texture_loop(t_game *game, t_ray *ray, int x, int tex_x);
 
 // Renderizado principal
 void		render_background(t_game *game);
