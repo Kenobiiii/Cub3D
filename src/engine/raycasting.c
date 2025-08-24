@@ -15,11 +15,13 @@
 
 void	init_ray(t_ray *ray, t_game *game, int x)
 {
-	float	camera_x;
+	double	camera_x;
 
-	camera_x = 2.0 * x / (float)game->win_width - 1.0;
-	ray->dir.x = game->player.dir.x + camera_x * game->player.fov.x;
-	ray->dir.y = game->player.dir.y + camera_x * game->player.fov.y;
+	camera_x = 2 * x / (double)game->win_width - 1;
+	ray->dir.x = game->player.dir.x + game->player.fov.x * camera_x;
+	ray->dir.y = game->player.dir.y + game->player.fov.y * camera_x;
+	ray->map_pos.x = (int)game->player.pos.x;
+	ray->map_pos.y = (int)game->player.pos.y;
 	ray->pos.x = game->player.pos.x;
 	ray->pos.y = game->player.pos.y;
 	ray->hit = 0;
@@ -27,20 +29,12 @@ void	init_ray(t_ray *ray, t_game *game, int x)
 
 void	calculate_delta_dist(t_ray *ray)
 {
-	if (ray->dir.x == 0)
-		ray->delta_dist.x = 1e30;
-	else
-		ray->delta_dist.x = fabs(1.0 / ray->dir.x);
-	if (ray->dir.y == 0)
-		ray->delta_dist.y = 1e30;
-	else
-		ray->delta_dist.y = fabs(1.0 / ray->dir.y);
+	ray->delta_dist.x = fabs(1 / ray->dir.x);
+	ray->delta_dist.y = fabs(1 / ray->dir.y);
 }
 
 void	calculate_step_and_side_dist(t_ray *ray)
 {
-	ray->map_pos.x = (int)ray->pos.x;
-	ray->map_pos.y = (int)ray->pos.y;
 	if (ray->dir.x < 0)
 	{
 		ray->step.x = -1;

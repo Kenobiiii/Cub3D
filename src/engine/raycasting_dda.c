@@ -36,11 +36,9 @@ void	perform_dda(t_ray *ray, t_game *game)
 void	calculate_wall_distance(t_ray *ray)
 {
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_pos.x - ray->pos.x 
-				+ (1 - ray->step.x) / 2) / ray->dir.x;
+		ray->perp_wall_dist = (ray->side_dist.x - ray->delta_dist.x);
 	else
-		ray->perp_wall_dist = (ray->map_pos.y - ray->pos.y 
-				+ (1 - ray->step.y) / 2) / ray->dir.y;
+		ray->perp_wall_dist = (ray->side_dist.y - ray->delta_dist.y);
 }
 
 void	determine_wall_texture(t_ray *ray)

@@ -58,10 +58,13 @@ typedef struct s_ray
     t_vector2i  map_pos;        // Posición actual en el mapa (grid)
     t_vector2i  step;           // Dirección de paso (+1 o -1) para X e Y
     float       perp_wall_dist; // Distancia perpendicular a la pared
+    float       camera_x;       // Posición en el plano de cámara (-1 a 1)
     int         side;           // ¿Lado NS (0) o EW (1) de la pared?
     int         hit;            // ¿Golpeamos una pared? (0=no, 1=sí)
     int         tex_num;        // Número de textura a usar (0=NO, 1=SO, 2=WE, 3=EA)
     float       wall_x;         // Posición exacta donde el rayo golpea la pared
+    int         draw_start;     // Píxel Y donde empezar a dibujar
+    int         draw_end;       // Píxel Y donde terminar de dibujar
 }   t_ray;
 
 /* ========================================================================= */
@@ -230,6 +233,8 @@ void		perform_dda(t_ray *ray, t_game *game);
 void		calculate_wall_distance(t_ray *ray);
 void		determine_wall_texture(t_ray *ray);
 void		cast_single_ray(t_ray *ray, t_game *game, int x);
+int			raycasting_engine(t_game *game);
+void		init_ray_data(t_ray *ray);
 
 // Renderizado de paredes
 void		calculate_wall_x(t_ray *ray);

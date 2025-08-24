@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_rendering.c                                   :+:      :+:    :+:   */
+/*   wall_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 19:53:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/23 20:06:47 by paromero         ###   ########.fr       */
+/*   Created: 2025/08/23 20:15:00 by paromero          #+#    #+#             */
+/*   Updated: 2025/08/23 20:40:58 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	calculate_wall_x(t_ray *ray)
 		ray->wall_x += 1.0f;
 }
 
-void	calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start, 
+void	calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start,
 	int *draw_end)
 {
 	int	line_height;
@@ -41,45 +41,17 @@ void	calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start,
 		*draw_end = game->win_height - 1;
 }
 
-void	draw_wall_column(t_game *game, t_ray *ray, int x)
+int	calculate_tex_x(t_ray *ray, t_game *game)
 {
-	int		y;
-	int		tex_x;
-	int		tex_y;
-	int		start;
-	int		end;
+	int	tex_x;
 
 	tex_x = (int)(ray->wall_x * game->textures[ray->tex_num].width);
 	if (tex_x < 0)
 		tex_x = 0;
 	if (tex_x >= (int)game->textures[ray->tex_num].width)
 		tex_x = game->textures[ray->tex_num].width - 1;
-	if ((ray->side == 0 && ray->dir.x > 0) 
+	if ((ray->side == 0 && ray->dir.x > 0)
 		|| (ray->side == 1 && ray->dir.y < 0))
 		tex_x = game->textures[ray->tex_num].width - tex_x - 1;
-	start = ray->draw_start;
-	if (start < 0)
-		start = 0;
-	end = ray->draw_end;
-	if (end >= game->win_height)
-		end = game->win_height - 1;
-	y = start;
-	while (y <= end)
-	{
-		tex_y = ((y - ray->draw_start) * game->textures[ray->tex_num].height)
-			/ (ray->draw_end - ray->draw_start);
-		if (tex_y >= (int)game->textures[ray->tex_num].height)
-			tex_y = game->textures[ray->tex_num].height - 1;
-		if (tex_y < 0)
-			tex_y = 0;
-		put_texture_pixel(game, x, y, &game->textures[ray->tex_num], 
-			tex_x, tex_y);
-		y++;
-	}
-}
-
-void	render_frame(t_game *game)
-{
-	render_background(game);
-	raycasting_engine(game);
+	return (tex_x);
 }

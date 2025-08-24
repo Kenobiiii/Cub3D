@@ -32,6 +32,7 @@ SRCS = src/main.c \
        src/engine/input_system.c \
        src/engine/raycasting.c \
        src/engine/raycasting_dda.c \
+       src/engine/raycasting_new.c \
        src/engine/wall_rendering.c
 
 OBJS = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRCS))
