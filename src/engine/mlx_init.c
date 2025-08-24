@@ -44,9 +44,9 @@ void handle_close(void *param)
 // Inicializa MLX42 y crea la ventana
 int init_mlx42(t_game *game)
 {
-	game->win_width = 800;
-	game->win_height = 600;
-	game->mlx = mlx_init(game->win_width, game->win_height, "CUB3D", false);
+	game->win_width = WINDOW_WIDTH;
+	game->win_height = WINDOW_HEIGHT;
+	game->mlx = mlx_init(game->win_width, game->win_height, WINDOW_TITLE, false);
 	if (!game->mlx)
 	{
 		ft_putstr_fd("Error: Failed to initialize MLX42\n", 2);

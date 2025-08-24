@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 12:28:37 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/23 20:40:14 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:24:33 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	init_player(t_game *game)
 	game->player.pos.x = game->config.player_start.x + 0.5f;
 	game->player.pos.y = game->config.player_start.y + 0.5f;
 	set_direction_vectors(&game->player, game->config.player_dir);
-	game->player.move_speed = 0.05f;
-	game->player.rot_speed = 0.03f;
+	game->player.move_speed = PLAYER_MOVE_SPEED;
+	game->player.rot_speed = PLAYER_ROT_SPEED;
 	if (validate_player_position(game) == -1)
 	{
 		printf("Warning: Player position validation failed\n");

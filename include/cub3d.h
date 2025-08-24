@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/23 20:06:47 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:24:33 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,5 +241,18 @@ void		calculate_wall_x(t_ray *ray);
 void		calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start, 
 				int *draw_end);
 void		draw_wall_column(t_game *game, t_ray *ray, int x);
+
+/* ========================================================================= */
+/* 📌 Constantes configurables del juego */
+/* ========================================================================= */
+
+// Configuración de ventana
+# define WINDOW_WIDTH           800
+# define WINDOW_HEIGHT          600
+# define WINDOW_TITLE           "CUB3D"
+
+// Configuración del jugador
+# define PLAYER_MOVE_SPEED      0.05f
+# define PLAYER_ROT_SPEED       0.03f
 
 #endif
