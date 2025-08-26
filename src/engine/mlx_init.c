@@ -74,12 +74,18 @@ int	init_mlx42(t_game *game)
 int	close_game(t_game *game)
 {
 	cleanup_textures(game);
+	if (game->screen.img)
+	{
+		mlx_delete_image(game->mlx, game->screen.img);
+		game->screen.img = NULL;
+	}
 	if (game->mlx)
 	{
 		mlx_terminate(game->mlx);
 		game->mlx = NULL;
 	}
-	printf("✅ MLX42 resources freed\n");
+	free_config(&game->config);
+	printf("✅ All resources freed\n");
 	exit(0);
 	return (0);
 }

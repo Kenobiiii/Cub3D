@@ -169,6 +169,7 @@ int			parse_rgb(char *color_str);
 
 // Utilidades de memoria
 void		free_array(char **array);
+void		free_config(t_config *config);
 
 // wall_utils.c
 int			validate_extra_chars(int i, int start, int len, t_config *config);

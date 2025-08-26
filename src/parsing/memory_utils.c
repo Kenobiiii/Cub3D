@@ -27,3 +27,24 @@ void	free_array(char **array)
 	}
 	free(array);
 }
+
+void	free_config(t_config *config)
+{
+	if (!config)
+		return ;
+	if (config->no_path)
+		free(config->no_path);
+	if (config->so_path)
+		free(config->so_path);
+	if (config->we_path)
+		free(config->we_path);
+	if (config->ea_path)
+		free(config->ea_path);
+	if (config->map.grid)
+		free_array(config->map.grid);
+	config->no_path = NULL;
+	config->so_path = NULL;
+	config->we_path = NULL;
+	config->ea_path = NULL;
+	config->map.grid = NULL;
+}
