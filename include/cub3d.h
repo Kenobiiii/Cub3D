@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/24 20:31:03 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/26 20:31:21 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,128 +23,128 @@
 /* ========================================================================= */
 typedef struct s_vector2i
 {
-    int x;
-    int y;
-}   t_vector2i;
+	int	x;
+	int	y;
+}	t_vector2i;
 
 /* ========================================================================= */
 /* 📌 Vector flotante 2D: para posición/movimiento en el espacio real */
 /* ========================================================================= */
 typedef struct s_vector2f
 {
-    float   x;
-    float   y;
-}   t_vector2f;
+	float	x;
+	float	y;
+}	t_vector2f;
 
 /* ========================================================================= */
 /* 📌 Textura genérica de MLX: almacena imagen y metadatos */
 /* ========================================================================= */
 typedef struct s_texture
 {
-    mlx_image_t    *img;
-    int     width;
-    int     height;
-}   t_texture;
+	mlx_image_t	*img;
+	int			width;
+	int			height;
+}	t_texture;
 
 /* ========================================================================= */
 /* 📌 Parámetros de textura: para funciones con múltiples argumentos */
 /* ========================================================================= */
 typedef struct s_texture_params
 {
-    t_texture   *texture;
-    int         tex_x;
-    int         tex_y;
-}   t_texture_params;
+	t_texture	*texture;
+	int			tex_x;
+	int			tex_y;
+}	t_texture_params;
 
 /* ========================================================================= */
 /* 📌 Rayo para raycasting: información completa del algoritmo DDA */
 /* ========================================================================= */
 typedef struct s_ray
 {
-    t_vector2f  pos;            // Posición actual del rayo
-    t_vector2f  dir;            // Dirección del rayo
-    t_vector2f  delta_dist;     // Distancia entre intersecciones X e Y
-    t_vector2f  side_dist;      // Distancia a próxima intersección X e Y
-    t_vector2i  map_pos;        // Posición actual en el mapa (grid)
-    t_vector2i  step;           // Dirección de paso (+1 o -1) para X e Y
-    float       perp_wall_dist; // Distancia perpendicular a la pared
-    float       camera_x;       // Posición en el plano de cámara (-1 a 1)
-    int         side;           // ¿Lado NS (0) o EW (1) de la pared?
-    int         hit;            // ¿Golpeamos una pared? (0=no, 1=sí)
-    int         tex_num;        // Número de textura a usar (0=NO, 1=SO, 2=WE, 3=EA)
-    float       wall_x;         // Posición exacta donde el rayo golpea la pared
-    int         draw_start;     // Píxel Y donde empezar a dibujar
-    int         draw_end;       // Píxel Y donde terminar de dibujar
-}   t_ray;
+	t_vector2f	pos;			// Posición actual del rayo
+	t_vector2f	dir;			// Dirección del rayo
+	t_vector2f	delta_dist;		// Distancia entre intersecciones X e Y
+	t_vector2f	side_dist;		// Distancia a próxima intersección X e Y
+	t_vector2i	map_pos;		// Posición actual en el mapa (grid)
+	t_vector2i	step;			// Dirección de paso (+1 o -1) para X e Y
+	float		perp_wall_dist;	// Distancia perpendicular a la pared
+	float		camera_x;		// Posición en el plano de cámara (-1 a 1)
+	int			side;			// ¿Lado NS (0) o EW (1) de la pared?
+	int			hit;			// ¿Golpeamos una pared? (0=no, 1=sí)
+	int			tex_num;		// Número de txt a usar (0=NO, 1=SO, 2=WE, 3=EA)
+	float		wall_x;			// Posición exacta donde el rayo golpea la pared
+	int			draw_start;		// Píxel Y donde empezar a dibujar
+	int			draw_end;		// Píxel Y donde terminar de dibujar
+}	t_ray;
 
 /* ========================================================================= */
 /* 📌 Input del jugador: estado de todas las teclas */
 /* ========================================================================= */
 typedef struct s_input
 {
-    int w;          // Avanzar
-    int s;          // Retroceder
-    int a;          // Izquierda (strafe)
-    int d;          // Derecha (strafe)
-    int left;       // Rotar izquierda
-    int right;      // Rotar derecha
-    int esc;        // Salir
-}   t_input;
+	int	w;			// Avanzar
+	int	s;			// Retroceder
+	int	a;			// Izquierda (strafe)
+	int	d;			// Derecha (strafe)
+	int	left;		// Rotar izquierda
+	int	right;		// Rotar derecha
+	int	esc;		// Salir
+}	t_input;
 
 /* ========================================================================= */
 /* 📌 Jugador: posición, dirección y plano de cámara para raycasting */
 /* ========================================================================= */
 typedef struct s_player
 {
-    t_vector2f  pos;            // Posición actual en el mundo
-    t_vector2f  dir;            // Vector dirección (hacia donde mira)
-    t_vector2f  fov;            // Campo de visión (field of view)
-    float       move_speed;     // Velocidad de movimiento
-    float       rot_speed;      // Velocidad de rotación
-}   t_player;
+	t_vector2f	pos;			// Posición actual en el mundo
+	t_vector2f	dir;			// Vector dirección (hacia donde mira)
+	t_vector2f	fov;			// Campo de visión (field of view)
+	float		move_speed;		// Velocidad de movimiento
+	float		rot_speed;		// Velocidad de rotación
+}	t_player;
 
 /* ========================================================================= */
 /* 📌 Datos del mapa: grid y dimensiones */
 /* ========================================================================= */
 typedef struct s_map
 {
-    char    **grid;     // Matriz 2D del mapa
-    int     width;      // Ancho en caracteres
-    int     height;     // Alto en líneas
-}   t_map;
+	char	**grid;		// Matriz 2D del mapa
+	int		width;		// Ancho en caracteres
+	int		height;		// Alto en líneas
+}	t_map;
 
 /* ========================================================================= */
 /* 📌 Configuración general parseada desde .cub */
 /* ========================================================================= */
 typedef struct s_config
 {
-    char        *no_path;       // Ruta textura Norte
-    char        *so_path;       // Ruta textura Sur
-    char        *we_path;       // Ruta textura Oeste
-    char        *ea_path;       // Ruta textura Este
-    int         floor_color;    // Color suelo (RGB)
-    int         ceiling_color;  // Color techo (RGB)
-    char        *map_path;      // Ruta del archivo .cub
-    t_map       map;            // Datos del mapa
-    t_vector2f  player_start;   // Posición inicial del jugador
-    char        player_dir;     // Dirección inicial ('N', 'S', 'E', 'W')
-}   t_config;
+	char		*no_path;		// Ruta textura Norte
+	char		*so_path;		// Ruta textura Sur
+	char		*we_path;		// Ruta textura Oeste
+	char		*ea_path;		// Ruta textura Este
+	int			floor_color;	// Color suelo (RGB)
+	int			ceiling_color;	// Color techo (RGB)
+	char		*map_path;		// Ruta del archivo .cub
+	t_map		map;			// Datos del mapa
+	t_vector2f	player_start;	// Posición inicial del jugador
+	char		player_dir;		// Dirección inicial ('N', 'S', 'E', 'W')
+}	t_config;
 
 /* ========================================================================= */
 /* 📌 Control general del motor y render: mlx, texturas, jugador */
 /* ========================================================================= */
 typedef struct s_game
 {
-    mlx_t        *mlx;           // Puntero MLX
-    t_texture   screen;         // Buffer de pantalla para renderizar
-    t_config    config;         // Configuración parseada
-    t_player    player;         // Estado del jugador
-    t_texture   textures[4];    // Texturas cargadas [NO, SO, WE, EA]
-    t_ray       ray;            // Rayo actual para raycasting
-    t_input     input;          // Estado del input
-    int         win_width;      // Ancho de ventana
-    int         win_height;     // Alto de ventana
-}   t_game;
+	mlx_t		*mlx;			// Puntero MLX
+	t_texture	screen;			// Buffer de pantalla para renderizar
+	t_config	config;			// Configuración parseada
+	t_player	player;			// Estado del jugador
+	t_texture	textures[4];	// Texturas cargadas [NO, SO, WE, EA]
+	t_ray		ray;			// Rayo actual para raycasting
+	t_input		input;			// Estado del input
+	int			win_width;		// Ancho de ventana
+	int			win_height;		// Alto de ventana
+}	t_game;
 
 /* ========================================================================= */
 /* 📌 Funciones de parsing */
@@ -203,8 +203,10 @@ int			create_rgba(int r, int g, int b, int a);
 
 // Renderizado básico
 void		clear_screen(mlx_image_t *img);
-void		draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color);
-void		put_texture_pixel(t_game *game, int x, int y, t_texture_params *params);
+void		draw_floor_ceiling(mlx_image_t *img, int floor_color,
+				int ceiling_color);
+void		put_texture_pixel(t_game *game, int x, int y,
+				t_texture_params *params);
 void		draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x);
 void		draw_texture_loop(t_game *game, t_ray *ray, int x, int tex_x);
 
@@ -250,7 +252,7 @@ void		init_ray_data(t_ray *ray);
 
 // Renderizado de paredes
 void		calculate_wall_x(t_ray *ray);
-void		calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start, 
+void		calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start,
 				int *draw_end);
 void		draw_wall_column(t_game *game, t_ray *ray, int x);
 
