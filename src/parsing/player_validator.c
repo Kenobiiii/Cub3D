@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_validator.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 14:15:12 by anggalle          #+#    #+#             */
-/*   Updated: 2025/07/29 15:55:33 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/08/26 19:31:33 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int	count_and_store_player(t_config *config)
 				config->player_start.x = j;
 				config->player_start.y = i;
 				config->player_dir = config->map.grid[i][j];
+				config->map.grid[i][j] = '0';
 			}
 			j++;
 		}
