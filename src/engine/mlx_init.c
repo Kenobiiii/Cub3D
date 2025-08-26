@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 00:00:00 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/24 20:27:51 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/26 20:20:58 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ int	init_mlx42(t_game *game)
 	mlx_loop_hook(game->mlx, game_update, game);
 	mlx_loop(game->mlx);
 	printf("✅ MLX42 initialized successfully!\n");
-	printf("   Window size: %dx%d\n", game->win_width, game->win_height);
-	printf("   Press ESC to close\n");
 	return (0);
 }
 

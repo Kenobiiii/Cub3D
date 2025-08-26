@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 14:15:12 by anggalle          #+#    #+#             */
-/*   Updated: 2025/08/26 19:31:33 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/26 20:20:05 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	validate_player(t_config *config)
 	px = (int)config->player_start.x;
 	py = (int)config->player_start.y;
 	rowlen = ft_strlen(config->map.grid[py]);
-	printf("DEBUG: Player at (%d, %d) of rowlen %d, map height %d\n", px, py, rowlen, config->map.height);
 	if (px == 0 || py == 0 || py == config->map.height - 1
 		|| px == rowlen - 1)
 	{
