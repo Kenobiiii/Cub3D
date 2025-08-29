@@ -17,6 +17,7 @@ int		raycasting_engine(t_game *game);3d.h                                       
 # include "libft.h"
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 # include "../MLX/include/MLX42/MLX42.h"
 
 /* ========================================================================= */

@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/24 12:00:00 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/24 20:27:51 by paromero         ###   ########.fr       */
+/*   Created: 2025/08/29 18:10:24 by paromero          #+#    #+#             */
+/*   Updated: 2025/08/29 18:11:35 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-#include <math.h>
 
 int	is_valid_position(t_game *game, float x, float y)
 {

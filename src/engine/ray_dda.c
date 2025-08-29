@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 18:00:00 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/29 18:00:00 by paromero         ###   ########.fr       */
+/*   Created: 2025/08/29 18:11:01 by paromero          #+#    #+#             */
+/*   Updated: 2025/08/29 18:11:20 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-#include <math.h>
 
 void	init_ray_data(t_ray *ray)
 {

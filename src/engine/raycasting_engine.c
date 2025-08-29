@@ -6,12 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:37:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/29 17:58:17 by paromero         ###   ########.fr       */
+/*   Updated: 2025/08/29 18:11:45 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-#include <math.h>
 
 static void	init_raycasting_info(int x, t_ray *ray, t_game *game)
 {
