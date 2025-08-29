@@ -21,19 +21,6 @@ void	calculate_wall_x(t_ray *ray)
 	ray->wall_x -= (int)ray->wall_x;
 }
 
-void	calculate_line_height(t_game *game, t_ray *ray)
-{
-	int	line_height;
-
-	line_height = (int)(game->win_height / ray->perp_wall_dist);
-	ray->draw_start = -line_height / 2 + game->win_height / 2;
-	if (ray->draw_start < 0)
-		ray->draw_start = 0;
-	ray->draw_end = line_height / 2 + game->win_height / 2;
-	if (ray->draw_end >= game->win_height)
-		ray->draw_end = game->win_height - 1;
-}
-
 static int	calculate_tex_x(t_game *game, t_ray *ray)
 {
 	int	tex_x;

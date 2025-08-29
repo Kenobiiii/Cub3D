@@ -28,15 +28,13 @@ SRCS = src/main.c \
        src/engine/texture_init.c \
        src/engine/render_basic.c \
        src/engine/render_utils.c \
-       src/engine/render_images.c \
        src/engine/player_init.c \
-       src/engine/player_utils.c \
        src/engine/input_system.c \
        src/engine/event_system.c \
        src/engine/collision_system.c \
-       src/engine/ray_utils.c \
-       src/engine/game_loop.c \
        src/engine/raycasting_engine.c \
+       src/engine/ray_dda.c \
+       src/engine/render_background.c \
        src/engine/wall_rendering.c
 
 OBJS = $(patsubst src/%.c, $(OBJ_DIR)/%.o, $(SRCS))

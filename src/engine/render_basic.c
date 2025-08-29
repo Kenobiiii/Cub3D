@@ -86,25 +86,3 @@ void	draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color)
 		y++;
 	}
 }
-
-static int	convert_rgb_to_mlx(int rgb_color)
-{
-	int	r;
-	int	g;
-	int	b;
-
-	r = (rgb_color >> 16) & 0xFF;
-	g = (rgb_color >> 8) & 0xFF;
-	b = rgb_color & 0xFF;
-	return (create_rgba(r, g, b, 255));
-}
-
-void	render_background(t_game *game)
-{
-	int	floor_color;
-	int	ceiling_color;
-
-	floor_color = convert_rgb_to_mlx(game->config.floor_color);
-	ceiling_color = convert_rgb_to_mlx(game->config.ceiling_color);
-	draw_floor_ceiling(game->screen.img, floor_color, ceiling_color);
-}

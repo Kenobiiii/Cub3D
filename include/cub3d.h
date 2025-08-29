@@ -1,7 +1,8 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*  void		cast_single_ray(t_ray *ray, t_game *game, int x);
+int		raycasting_engine(t_game *game);3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -226,7 +227,6 @@ void		cleanup_textures(t_game *game);
 // Inicialización del jugador
 void		init_player(t_game *game);
 void		set_direction_vectors(t_player *player, char direction);
-int			validate_player_position(t_game *game);
 
 // Sistema de input y movimiento
 void		update_input(t_game *game);
@@ -245,10 +245,15 @@ void		calculate_delta_dist(t_ray *ray);
 void		calculate_step_and_side_dist(t_ray *ray);
 void		perform_dda(t_ray *ray, t_game *game);
 void		calculate_wall_distance(t_ray *ray);
-void		determine_wall_texture(t_ray *ray);
 void		cast_single_ray(t_ray *ray, t_game *game, int x);
 int			raycasting_engine(t_game *game);
+
+// Funciones auxiliares para algoritmo DDA
 void		init_ray_data(t_ray *ray);
+void		determine_wall_texture(t_ray *ray);
+void		set_dda_params(t_ray *ray, t_game *game);
+void		perform_dda_algorithm(t_game *game, t_ray *ray);
+void		calculate_line_height(t_ray *ray, t_game *game);
 
 // Renderizado de paredes
 void		calculate_wall_x(t_ray *ray);
