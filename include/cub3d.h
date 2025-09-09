@@ -1,13 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*  void		cast_single_ray(t_ray *ray, t_game *game, int x);
-int		raycasting_engine(t_game *game);3d.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 13:28:46 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/26 20:31:21 by paromero         ###   ########.fr       */
+/*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
+/*   Updated: 2025/09/09 09:49:05 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,8 +266,8 @@ void		draw_wall_column(t_game *game, t_ray *ray, int x);
 /* ========================================================================= */
 
 // Configuración de ventana
-# define WINDOW_WIDTH           800
-# define WINDOW_HEIGHT          600
+# define WINDOW_WIDTH           1200
+# define WINDOW_HEIGHT          1000
 # define WINDOW_TITLE           "CUB3D"
 
 // Configuración del jugador

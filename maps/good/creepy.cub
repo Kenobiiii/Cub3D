@@ -1,10 +1,10 @@
-NO sprites/wall1.png
-EA sprites/wall1.png
-SO sprites/wall1.png
-WE sprites/wall1.png
+SO sprites/S.png
+NO sprites/N.png
+EA sprites/E.png
+WE sprites/W.png
 
 C 35,19,73
-F 15,6,40
+F 0,0,0
 
 111111111111111
 111111000111111
