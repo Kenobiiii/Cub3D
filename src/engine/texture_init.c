@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 18:46:53 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/24 19:24:33 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/09 10:03:46 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ int	load_textures(t_game *game)
 		ft_putstr_fd("Error: Failed to load South texture\n", 2);
 		return (-1);
 	}
-	if (load_single_texture(game, game->config.we_path, 2) == -1)
-	{
-		ft_putstr_fd("Error: Failed to load West texture\n", 2);
-		return (-1);
-	}
-	if (load_single_texture(game, game->config.ea_path, 3) == -1)
+	if (load_single_texture(game, game->config.ea_path, 2) == -1)
 	{
 		ft_putstr_fd("Error: Failed to load East texture\n", 2);
+		return (-1);
+	}
+	if (load_single_texture(game, game->config.we_path, 3) == -1)
+	{
+		ft_putstr_fd("Error: Failed to load West texture\n", 2);
 		return (-1);
 	}
 	ft_printf("✅ All wall textures loaded successfully!\n");
