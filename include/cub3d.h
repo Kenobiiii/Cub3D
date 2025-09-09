@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/09 09:49:05 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/09 10:34:23 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,29 @@
 # include <math.h>
 # include "../MLX/include/MLX42/MLX42.h"
 
-/* ========================================================================= */
-/* 📌 Vector entero 2D: para coordenadas de mapa, grillas, píxeles exactos */
-/* ========================================================================= */
+//! Windows config
+# define WINDOW_WIDTH           1200
+# define WINDOW_HEIGHT          1000
+# define WINDOW_TITLE           "CUB3D"
+
+//! Player confog
+# define PLAYER_MOVE_SPEED      0.05f
+# define PLAYER_ROT_SPEED       0.03f
+
+//! Int vector 2D: for maps, pixel, coords
 typedef struct s_vector2i
 {
 	int	x;
 	int	y;
 }	t_vector2i;
 
-/* ========================================================================= */
-/* 📌 Vector flotante 2D: para posición/movimiento en el espacio real */
-/* ========================================================================= */
+//! float vector for movement
 typedef struct s_vector2f
 {
 	float	x;
 	float	y;
 }	t_vector2f;
 
-/* ========================================================================= */
-/* 📌 Textura genérica de MLX: almacena imagen y metadatos */
-/* ========================================================================= */
 typedef struct s_texture
 {
 	mlx_image_t	*img;
@@ -47,9 +49,6 @@ typedef struct s_texture
 	int			height;
 }	t_texture;
 
-/* ========================================================================= */
-/* 📌 Parámetros de textura: para funciones con múltiples argumentos */
-/* ========================================================================= */
 typedef struct s_texture_params
 {
 	t_texture	*texture;
@@ -57,152 +56,132 @@ typedef struct s_texture_params
 	int			tex_y;
 }	t_texture_params;
 
-/* ========================================================================= */
-/* 📌 Rayo para raycasting: información completa del algoritmo DDA */
-/* ========================================================================= */
 typedef struct s_ray
 {
-	t_vector2f	pos;			// Posición actual del rayo
-	t_vector2f	dir;			// Dirección del rayo
-	t_vector2f	delta_dist;		// Distancia entre intersecciones X e Y
-	t_vector2f	side_dist;		// Distancia a próxima intersección X e Y
-	t_vector2i	map_pos;		// Posición actual en el mapa (grid)
-	t_vector2i	step;			// Dirección de paso (+1 o -1) para X e Y
-	float		perp_wall_dist;	// Distancia perpendicular a la pared
-	float		camera_x;		// Posición en el plano de cámara (-1 a 1)
-	int			side;			// ¿Lado NS (0) o EW (1) de la pared?
-	int			hit;			// ¿Golpeamos una pared? (0=no, 1=sí)
-	int			tex_num;		// Número de txt a usar (0=NO, 1=SO, 2=WE, 3=EA)
-	float		wall_x;			// Posición exacta donde el rayo golpea la pared
-	int			draw_start;		// Píxel Y donde empezar a dibujar
-	int			draw_end;		// Píxel Y donde terminar de dibujar
+	t_vector2f	pos;			//! actual position of the ray
+	t_vector2f	dir;			//! direction
+	t_vector2f	delta_dist;		//! distance in the grid
+	t_vector2f	side_dist;		//! distance to the next grid
+	t_vector2i	map_pos;		//! Pos in the map
+	t_vector2i	step;			//! direction to the next grid
+	float		perp_wall_dist;	//! distance to the wall
+	float		camera_x;		//! Pos of the camera
+	int			side;			//! side of the wall
+	int			hit;			//! 1 = yes 0 = no
+	int			tex_num;		//! Num of texture
+	float		wall_x;			//! Pos where ray hit
+	int			draw_start;		//! When did start
+	int			draw_end;		//! When did end
 }	t_ray;
 
-/* ========================================================================= */
-/* 📌 Input del jugador: estado de todas las teclas */
-/* ========================================================================= */
 typedef struct s_input
 {
-	int	w;			// Avanzar
-	int	s;			// Retroceder
-	int	a;			// Izquierda (strafe)
-	int	d;			// Derecha (strafe)
-	int	left;		// Rotar izquierda
-	int	right;		// Rotar derecha
-	int	esc;		// Salir
+	int	w;
+	int	s;
+	int	a;
+	int	d;
+	int	left;
+	int	right;
+	int	esc;
 }	t_input;
 
-/* ========================================================================= */
-/* 📌 Jugador: posición, dirección y plano de cámara para raycasting */
-/* ========================================================================= */
 typedef struct s_player
 {
-	t_vector2f	pos;			// Posición actual en el mundo
-	t_vector2f	dir;			// Vector dirección (hacia donde mira)
-	t_vector2f	fov;			// Campo de visión (field of view)
-	float		move_speed;		// Velocidad de movimiento
-	float		rot_speed;		// Velocidad de rotación
+	t_vector2f	pos;
+	t_vector2f	dir;
+	t_vector2f	fov;
+	float		move_speed;
+	float		rot_speed;
 }	t_player;
 
-/* ========================================================================= */
-/* 📌 Datos del mapa: grid y dimensiones */
-/* ========================================================================= */
 typedef struct s_map
 {
-	char	**grid;		// Matriz 2D del mapa
-	int		width;		// Ancho en caracteres
-	int		height;		// Alto en líneas
+	char	**grid;
+	int		width;
+	int		height;
 }	t_map;
 
-/* ========================================================================= */
-/* 📌 Configuración general parseada desde .cub */
-/* ========================================================================= */
+//! Map info
 typedef struct s_config
 {
-	char		*no_path;		// Ruta textura Norte
-	char		*so_path;		// Ruta textura Sur
-	char		*we_path;		// Ruta textura Oeste
-	char		*ea_path;		// Ruta textura Este
-	int			floor_color;	// Color suelo (RGB)
-	int			ceiling_color;	// Color techo (RGB)
-	char		*map_path;		// Ruta del archivo .cub
-	t_map		map;			// Datos del mapa
-	t_vector2f	player_start;	// Posición inicial del jugador
-	char		player_dir;		// Dirección inicial ('N', 'S', 'E', 'W')
+	char		*no_path;
+	char		*so_path;
+	char		*we_path;
+	char		*ea_path;
+	int			floor_color;
+	int			ceiling_color;
+	char		*map_path;
+	t_map		map;
+	t_vector2f	player_start;
+	char		player_dir;
 }	t_config;
 
-/* ========================================================================= */
-/* 📌 Control general del motor y render: mlx, texturas, jugador */
-/* ========================================================================= */
+//! game struct
 typedef struct s_game
 {
-	mlx_t		*mlx;			// Puntero MLX
-	t_texture	screen;			// Buffer de pantalla para renderizar
-	t_config	config;			// Configuración parseada
-	t_player	player;			// Estado del jugador
-	t_texture	textures[4];	// Texturas cargadas [NO, SO, WE, EA]
-	t_ray		ray;			// Rayo actual para raycasting
-	t_input		input;			// Estado del input
-	int			win_width;		// Ancho de ventana
-	int			win_height;		// Alto de ventana
+	mlx_t		*mlx;
+	t_texture	screen;
+	t_config	config;
+	t_player	player;
+	t_texture	textures[4];
+	t_ray		ray;
+	t_input		input;
+	int			win_width;
+	int			win_height;	
 }	t_game;
 
-/* ========================================================================= */
-/* 📌 Funciones de parsing */
-/* ========================================================================= */
+//- Parsing functions
 
-// Función principal de parsing
+//! Main parse function
 t_config	parse_file(char *filename);
 
-// Lectura de elementos de configuración
+//! Reading of config
 int			read_config_elements(int fd, t_config *config);
 
-// Lectura del mapa
+//! Map parse
 int			read_map(int fd, t_config *config);
 
-// Validación del mapa
+//! Map validation
 int			validate_map(t_config *config);
 int			validate_walls(t_config *config);
 int			validate_player(t_config *config);
 
-// Utilidades de color
+//! Color utilities
 int			parse_rgb(char *color_str);
 
-// Utilidades de memoria
+//! Memory utilities
 void		free_array(char **array);
 void		free_config(t_config *config);
 
-// wall_utils.c
+//! Wall_utils
 int			validate_extra_chars(int i, int start, int len, t_config *config);
 int			validate_length_rules(int i, int len, t_config *config);
 int			find_first_char(int i, int len, t_config *config);
 int			find_last_char(int i, int len, t_config *config);
 int			validate_internal_spaces(int i, int len, t_config *config);
 
-// config_utils.c
+//! Config_utils
 int			validate_path(char *path);
 int			validate_color_string(char *color_str);
 
-// config_helpers.c
+//! Config_helpers
 int			is_texture_line(char *line);
 int			is_color_line(char *line);
 int			store_color_value(char *line, int color, t_config *config);
 int			store_texture_path(char *line, char *path, t_config *config);
 
-/* ========================================================================= */
-/* 📌 Funciones MLX42 personalizadas */
-/* ========================================================================= */
+//- Engine functions
 
-// Inicialización y cierre
+//! Initialization and closing
 int			init_mlx42(t_game *game);
 int			close_game(t_game *game);
 
-// Manipulación de píxeles
+//! Pixels
 void		put_pixel(mlx_image_t *img, int x, int y, int color);
 int			get_pixel(mlx_image_t *img, int x, int y);
 int			create_rgba(int r, int g, int b, int a);
 
-// Renderizado básico
+//! Basic rendering
 void		clear_screen(mlx_image_t *img);
 void		draw_floor_ceiling(mlx_image_t *img, int floor_color,
 				int ceiling_color);
@@ -211,35 +190,35 @@ void		put_texture_pixel(t_game *game, int x, int y,
 void		draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x);
 void		draw_texture_loop(t_game *game, t_ray *ray, int x, int tex_x);
 
-// Renderizado principal
+//! Render
 void		render_background(t_game *game);
 void		render_frame(t_game *game);
 
-// Game loop y eventos
+//! Game loop
 void		handle_keypress(mlx_key_data_t keydata, void *param);
 void		handle_close(void *param);
 
-// Carga de texturas
+//! Textures
 int			load_textures(t_game *game);
 int			load_single_texture(t_game *game, char *path, int index);
 void		cleanup_textures(t_game *game);
 
-// Inicialización del jugador
+//! Player init
 void		init_player(t_game *game);
 void		set_direction_vectors(t_player *player, char direction);
 
-// Sistema de input y movimiento
+//! Input & movement
 void		update_input(t_game *game);
 void		update_player_movement(t_game *game);
 void		update_player_rotation(t_game *game);
 void		rotate_vectors(t_vector2f *dir, t_vector2f *fov, float angle);
 void		game_update(void *param);
 
-// Collision detection
+//! Collision detection
 int			is_valid_position(t_game *game, float x, float y);
 void		move_player_safe(t_game *game, float new_x, float new_y);
 
-// Raycasting y DDA
+//! Raycasting & DDA
 void		init_ray(t_ray *ray, t_game *game, int x);
 void		calculate_delta_dist(t_ray *ray);
 void		calculate_step_and_side_dist(t_ray *ray);
@@ -248,30 +227,17 @@ void		calculate_wall_distance(t_ray *ray);
 void		cast_single_ray(t_ray *ray, t_game *game, int x);
 int			raycasting_engine(t_game *game);
 
-// Funciones auxiliares para algoritmo DDA
+//! DDA aux
 void		init_ray_data(t_ray *ray);
 void		determine_wall_texture(t_ray *ray);
 void		set_dda_params(t_ray *ray, t_game *game);
 void		perform_dda_algorithm(t_game *game, t_ray *ray);
 void		calculate_line_height(t_ray *ray, t_game *game);
 
-// Renderizado de paredes
+//! Wall render
 void		calculate_wall_x(t_ray *ray);
 void		calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start,
 				int *draw_end);
 void		draw_wall_column(t_game *game, t_ray *ray, int x);
-
-/* ========================================================================= */
-/* 📌 Constantes configurables del juego */
-/* ========================================================================= */
-
-// Configuración de ventana
-# define WINDOW_WIDTH           1200
-# define WINDOW_HEIGHT          1000
-# define WINDOW_TITLE           "CUB3D"
-
-// Configuración del jugador
-# define PLAYER_MOVE_SPEED      0.05f
-# define PLAYER_ROT_SPEED       0.03f
 
 #endif
