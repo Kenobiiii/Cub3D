@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 18:29:25 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:35:28 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,9 +188,8 @@ void		put_texture_pixel(t_game *game, int x, int y,
 void		draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x);
 void		draw_texture_loop(t_game *game, t_ray *ray, int x, int tex_x);
 
-//! Render
+//! Render_background
 void		render_background(t_game *game);
-void		render_frame(t_game *game);
 
 //! Game loop
 void		handle_keypress(mlx_key_data_t keydata, void *param);

@@ -6,17 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:10:44 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/29 18:10:47 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:35:06 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	render_frame(t_game *game)
-{
-	render_background(game);
-	raycasting_engine(game);
-}
 
 void	handle_keypress(mlx_key_data_t keydata, void *param)
 {
@@ -49,5 +43,5 @@ void	game_update(void *param)
 		close_game(game);
 	update_player_movement(game);
 	update_player_rotation(game);
-	render_frame(game);
+	raycasting_engine(game);
 }
