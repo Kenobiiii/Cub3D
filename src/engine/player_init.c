@@ -6,26 +6,28 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 12:28:37 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 17:38:29 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 17:42:01 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	set_north_direction(t_player *player)
+static void	set_north_south_direction(t_player *player, char direction)
 {
-	player->dir.x = 0.0f;
-	player->dir.y = -1.0f;
-	player->fov.x = 0.66f;
-	player->fov.y = 0.0f;
-}
-
-static void	set_south_direction(t_player *player)
-{
-	player->dir.x = 0.0f;
-	player->dir.y = 1.0f;
-	player->fov.x = -0.66f;
-	player->fov.y = 0.0f;
+	if (direction == 'N')
+	{
+		player->dir.x = 0.0f;
+		player->dir.y = -1.0f;
+		player->fov.x = 0.66f;
+		player->fov.y = 0.0f;
+	}
+	else if (direction == 'S')
+	{
+		player->dir.x = 0.0f;
+		player->dir.y = 1.0f;
+		player->fov.x = -0.66f;
+		player->fov.y = 0.0f;
+	}
 }
 
 static void	set_east_west_direction(t_player *player, char direction)
@@ -48,10 +50,8 @@ static void	set_east_west_direction(t_player *player, char direction)
 
 void	set_direction_vectors(t_player *player, char direction)
 {
-	if (direction == 'N')
-		set_north_direction(player);
-	else if (direction == 'S')
-		set_south_direction(player);
+	if (direction == 'N' || direction == 'S')
+		set_north_south_direction(player, direction);
 	else
 		set_east_west_direction(player, direction);
 }
