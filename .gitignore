@@ -1,6 +1,9 @@
 # .vscode
 .vscode
 
+# MLX
+MLX/build/
+
 # ejecutables
 cub3D
 *.a

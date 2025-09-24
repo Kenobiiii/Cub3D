@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:36:04 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/09 10:36:09 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 16:46:45 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	init_mlx42(t_game *game)
 	init_player(game);
 	render_background(game);
 	mlx_loop_hook(game->mlx, game_update, game);
-	mlx_loop(game->mlx);
 	printf("✅ MLX42 initialized successfully!\n");
 	return (0);
 }
