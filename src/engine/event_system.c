@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:10:44 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 18:35:06 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:38:17 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void	game_update(void *param)
 		close_game(game);
 	update_player_movement(game);
 	update_player_rotation(game);
+	render_background(game);
 	raycasting_engine(game);
 }
