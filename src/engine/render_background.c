@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:11:50 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 18:27:19 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:30:58 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static int	convert_rgb_to_mlx(int rgb_color)
 	return (create_rgba(r, g, b, 255));
 }
 
-static void	draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color)
+static void	draw_floor_ceiling(mlx_image_t *img, int floor_color,
+		int ceiling_color)
 {
 	int	x;
 	int	y;
