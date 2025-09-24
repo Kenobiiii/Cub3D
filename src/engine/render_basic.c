@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 20:00:44 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/29 17:58:17 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:27:10 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,6 @@ void	clear_screen(mlx_image_t *img)
 		while (x < (int)img->width)
 		{
 			put_pixel(img, x, y, 0x00000000);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < (int)img->height)
-	{
-		x = 0;
-		while (x < (int)img->width)
-		{
-			if (y < (int)img->height / 2)
-				put_pixel(img, x, y, ceiling_color);
-			else
-				put_pixel(img, x, y, floor_color);
 			x++;
 		}
 		y++;

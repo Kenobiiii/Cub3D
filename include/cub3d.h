@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/09 10:34:23 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:26:48 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,8 +183,6 @@ int			create_rgba(int r, int g, int b, int a);
 
 //! Basic rendering
 void		clear_screen(mlx_image_t *img);
-void		draw_floor_ceiling(mlx_image_t *img, int floor_color,
-				int ceiling_color);
 void		put_texture_pixel(t_game *game, int x, int y,
 				t_texture_params *params);
 void		draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x);

@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:11:50 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/29 18:11:52 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:27:19 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,27 @@ static int	convert_rgb_to_mlx(int rgb_color)
 	g = (rgb_color >> 8) & 0xFF;
 	b = rgb_color & 0xFF;
 	return (create_rgba(r, g, b, 255));
+}
+
+static void	draw_floor_ceiling(mlx_image_t *img, int floor_color, int ceiling_color)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < (int)img->height)
+	{
+		x = 0;
+		while (x < (int)img->width)
+		{
+			if (y < (int)img->height / 2)
+				put_pixel(img, x, y, ceiling_color);
+			else
+				put_pixel(img, x, y, floor_color);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	render_background(t_game *game)
