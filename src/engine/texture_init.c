@@ -6,13 +6,13 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 18:46:53 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/09 10:03:46 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:29:33 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	load_single_texture(t_game *game, char *path, int index)
+static int	load_single_texture(t_game *game, char *path, int index)
 {
 	mlx_texture_t	*texture;
 

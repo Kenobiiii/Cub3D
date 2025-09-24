@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 18:26:48 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:29:25 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,12 +198,10 @@ void		handle_close(void *param);
 
 //! Textures
 int			load_textures(t_game *game);
-int			load_single_texture(t_game *game, char *path, int index);
 void		cleanup_textures(t_game *game);
 
 //! Player init
 void		init_player(t_game *game);
-void		set_direction_vectors(t_player *player, char direction);
 
 //! Input & movement
 void		update_input(t_game *game);

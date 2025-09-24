@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 12:28:37 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 17:42:01 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:28:38 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	set_east_west_direction(t_player *player, char direction)
 	}
 }
 
-void	set_direction_vectors(t_player *player, char direction)
+static void	set_direction_vectors(t_player *player, char direction)
 {
 	if (direction == 'N' || direction == 'S')
 		set_north_south_direction(player, direction);
