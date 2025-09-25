@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 18:35:28 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:24:40 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,10 +183,6 @@ int			create_rgba(int r, int g, int b, int a);
 
 //! Basic rendering
 void		clear_screen(mlx_image_t *img);
-void		put_texture_pixel(t_game *game, int x, int y,
-				t_texture_params *params);
-void		draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x);
-void		draw_texture_loop(t_game *game, t_ray *ray, int x, int tex_x);
 
 //! Render_background
 void		render_background(t_game *game);
@@ -230,7 +226,6 @@ void		perform_dda_algorithm(t_game *game, t_ray *ray);
 void		calculate_line_height(t_ray *ray, t_game *game);
 
 //! Wall render
-void		calculate_wall_x(t_ray *ray);
 void		calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start,
 				int *draw_end);
 void		draw_wall_column(t_game *game, t_ray *ray, int x);

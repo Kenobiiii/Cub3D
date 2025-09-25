@@ -27,7 +27,6 @@ SRCS = src/main.c \
        src/engine/mlx_init.c \
        src/engine/texture_init.c \
        src/engine/render_basic.c \
-       src/engine/render_utils.c \
        src/engine/player_init.c \
        src/engine/input_system.c \
        src/engine/event_system.c \
