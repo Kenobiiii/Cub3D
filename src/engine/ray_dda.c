@@ -6,29 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:11:01 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 09:30:11 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:08:54 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	determine_wall_texture(t_ray *ray)
-{
-	if (ray->side == 0)
-	{
-		if (ray->step.x == 1)
-			ray->tex_num = 2;
-		else
-			ray->tex_num = 3;
-	}
-	else
-	{
-		if (ray->step.y == 1)
-			ray->tex_num = 1;
-		else
-			ray->tex_num = 0;
-	}
-}
 
 void	set_dda_params(t_ray *ray, t_game *game)
 {

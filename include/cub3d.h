@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 17:03:17 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:09:12 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,6 @@ int			create_rgba(int r, int g, int b, int a);
 int			raycasting_engine(t_game *game);
 
 //! ray_dda.c
-void		determine_wall_texture(t_ray *ray);
 void		set_dda_params(t_ray *ray, t_game *game);
 void		perform_dda_algorithm(t_game *game, t_ray *ray);
 void		calculate_line_height(t_ray *ray, t_game *game);
