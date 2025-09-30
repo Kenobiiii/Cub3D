@@ -6,30 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:11:01 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/29 18:11:20 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 09:30:11 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	init_ray_data(t_ray *ray)
-{
-	ray->camera_x = 0;
-	ray->dir.x = 0;
-	ray->dir.y = 0;
-	ray->map_pos.x = 0;
-	ray->map_pos.y = 0;
-	ray->step.x = 0;
-	ray->step.y = 0;
-	ray->side_dist.x = 0;
-	ray->side_dist.y = 0;
-	ray->delta_dist.x = 0;
-	ray->delta_dist.y = 0;
-	ray->perp_wall_dist = 0;
-	ray->wall_x = 0;
-	ray->side = 0;
-	ray->hit = 0;
-}
 
 void	determine_wall_texture(t_ray *ray)
 {

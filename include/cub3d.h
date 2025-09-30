@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/25 20:24:40 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 09:30:22 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,6 @@ void		cast_single_ray(t_ray *ray, t_game *game, int x);
 int			raycasting_engine(t_game *game);
 
 //! DDA aux
-void		init_ray_data(t_ray *ray);
 void		determine_wall_texture(t_ray *ray);
 void		set_dda_params(t_ray *ray, t_game *game);
 void		perform_dda_algorithm(t_game *game, t_ray *ray);
