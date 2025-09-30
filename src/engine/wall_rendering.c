@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 19:53:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/25 20:24:32 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 10:21:56 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static int	calculate_tex_x(t_game *game, t_ray *ray)
 	return (tex_x);
 }
 
-static void	put_texture_pixel(t_game *game, int x, int y, t_texture_params *params)
+static void	put_texture_pixel(t_game *game, int x, int y,
+	t_texture_params *params)
 {
 	int	color;
 
