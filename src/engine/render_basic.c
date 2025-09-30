@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 20:00:44 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 18:27:10 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:02:42 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,4 @@ int	get_pixel(mlx_image_t *img, int x, int y)
 int	create_rgba(int r, int g, int b, int a)
 {
 	return ((r << 24) | (g << 16) | (b << 8) | a);
-}
-
-void	clear_screen(mlx_image_t *img)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < (int)img->height)
-	{
-		x = 0;
-		while (x < (int)img->width)
-		{
-			put_pixel(img, x, y, 0x00000000);
-			x++;
-		}
-		y++;
-	}
 }

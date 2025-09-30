@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 16:55:33 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:03:17 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,16 +196,13 @@ void		update_input(t_game *game);
 void		update_player_movement(t_game *game);
 
 //! Collision_system.c
-int			is_valid_position(t_game *game, float x, float y);
 void		move_player_safe(t_game *game, float new_x, float new_y);
 void		update_player_rotation(t_game *game);
-void		rotate_vectors(t_vector2f *dir, t_vector2f *fov, float angle);
 
 //! render_basic.c
 void		put_pixel(mlx_image_t *img, int x, int y, int color);
 int			get_pixel(mlx_image_t *img, int x, int y);
 int			create_rgba(int r, int g, int b, int a);
-void		clear_screen(mlx_image_t *img);
 
 //! Raycasting_engine.c
 int			raycasting_engine(t_game *game);
@@ -217,11 +214,6 @@ void		perform_dda_algorithm(t_game *game, t_ray *ray);
 void		calculate_line_height(t_ray *ray, t_game *game);
 
 //! Wall_rendering.c
-void		calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start,
-				int *draw_end);
 void		draw_wall_column(t_game *game, t_ray *ray, int x);
-
-//! Basic rendering
-
 
 #endif

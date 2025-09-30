@@ -6,13 +6,13 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:10:24 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/29 18:11:35 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 16:58:20 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	is_valid_position(t_game *game, float x, float y)
+static int	is_valid_position(t_game *game, float x, float y)
 {
 	int	map_x;
 	int	map_y;
@@ -49,7 +49,7 @@ void	move_player_safe(t_game *game, float new_x, float new_y)
 		game->player.pos.y = new_y;
 }
 
-void	rotate_vectors(t_vector2f *dir, t_vector2f *fov, float angle)
+static void	rotate_vectors(t_vector2f *dir, t_vector2f *fov, float angle)
 {
 	float	old_dir_x;
 	float	old_fov_x;
