@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 09:30:22 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 16:55:33 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,61 +172,56 @@ int			store_texture_path(char *line, char *path, t_config *config);
 
 //- Engine functions
 
-//! Initialization and closing
+//! mlx_init.c
 int			init_mlx42(t_game *game);
 int			close_game(t_game *game);
 
-//! Pixels
-void		put_pixel(mlx_image_t *img, int x, int y, int color);
-int			get_pixel(mlx_image_t *img, int x, int y);
-int			create_rgba(int r, int g, int b, int a);
-
-//! Basic rendering
-void		clear_screen(mlx_image_t *img);
-
-//! Render_background
-void		render_background(t_game *game);
-
-//! Game loop
+//! event_system.c
 void		handle_keypress(mlx_key_data_t keydata, void *param);
 void		handle_close(void *param);
+void		game_update(void *param);
 
-//! Textures
+//! texture_init.c
 int			load_textures(t_game *game);
 void		cleanup_textures(t_game *game);
 
-//! Player init
+//! Player_init.c
 void		init_player(t_game *game);
 
-//! Input & movement
+//! Render_background.c
+void		render_background(t_game *game);
+
+//! Input_system.c
 void		update_input(t_game *game);
 void		update_player_movement(t_game *game);
-void		update_player_rotation(t_game *game);
-void		rotate_vectors(t_vector2f *dir, t_vector2f *fov, float angle);
-void		game_update(void *param);
 
-//! Collision detection
+//! Collision_system.c
 int			is_valid_position(t_game *game, float x, float y);
 void		move_player_safe(t_game *game, float new_x, float new_y);
+void		update_player_rotation(t_game *game);
+void		rotate_vectors(t_vector2f *dir, t_vector2f *fov, float angle);
 
-//! Raycasting & DDA
-void		init_ray(t_ray *ray, t_game *game, int x);
-void		calculate_delta_dist(t_ray *ray);
-void		calculate_step_and_side_dist(t_ray *ray);
-void		perform_dda(t_ray *ray, t_game *game);
-void		calculate_wall_distance(t_ray *ray);
-void		cast_single_ray(t_ray *ray, t_game *game, int x);
+//! render_basic.c
+void		put_pixel(mlx_image_t *img, int x, int y, int color);
+int			get_pixel(mlx_image_t *img, int x, int y);
+int			create_rgba(int r, int g, int b, int a);
+void		clear_screen(mlx_image_t *img);
+
+//! Raycasting_engine.c
 int			raycasting_engine(t_game *game);
 
-//! DDA aux
+//! ray_dda.c
 void		determine_wall_texture(t_ray *ray);
 void		set_dda_params(t_ray *ray, t_game *game);
 void		perform_dda_algorithm(t_game *game, t_ray *ray);
 void		calculate_line_height(t_ray *ray, t_game *game);
 
-//! Wall render
+//! Wall_rendering.c
 void		calculate_draw_limits(t_ray *ray, t_game *game, int *draw_start,
 				int *draw_end);
 void		draw_wall_column(t_game *game, t_ray *ray, int x);
+
+//! Basic rendering
+
 
 #endif
