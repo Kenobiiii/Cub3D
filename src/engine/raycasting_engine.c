@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:37:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 09:30:18 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 09:38:02 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,18 @@ static void	init_raycasting_info(int x, t_ray *ray, t_game *game)
 int	raycasting_engine(t_game *game)
 {
 	t_ray	ray;
-	int		x;
+	int		column;
 
-	x = 0;
-	while (x < game->win_width)
+	column = 0;
+	while (column < game->win_width)
 	{
-		init_raycasting_info(x, &ray, game);
+		init_raycasting_info(column, &ray, game);
 		set_dda_params(&ray, game);
 		perform_dda_algorithm(game, &ray);
 		calculate_line_height(&ray, game);
 		determine_wall_texture(&ray);
-		draw_wall_column(game, &ray, x);
-		x++;
+		draw_wall_column(game, &ray, column);
+		column++;
 	}
 	return (0);
 }
