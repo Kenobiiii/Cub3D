@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 17:09:12 by paromero         ###   ########.fr       */
+/*   Updated: 2025/09/30 17:13:37 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ typedef struct s_game
 	int			win_height;	
 }	t_game;
 
-//- Parsing functions
+//DONE Parsing functions
 
 //! Main parse function
 t_config	parse_file(char *filename);
@@ -170,7 +170,7 @@ int			is_color_line(char *line);
 int			store_color_value(char *line, int color, t_config *config);
 int			store_texture_path(char *line, char *path, t_config *config);
 
-//- Engine functions
+//DONE Engine functions
 
 //! mlx_init.c
 int			init_mlx42(t_game *game);
