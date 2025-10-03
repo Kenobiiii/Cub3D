@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/03 09:20:47 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/03 11:16:33 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,7 @@ void		perform_dda_algorithm(t_game *game, t_ray *ray);
 void		calculate_line_height(t_ray *ray, t_game *game);
 
 //! Wall_rendering.c
-void		draw_wall_column(t_game *game, t_ray *ray, int x);
+void		draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x);
+int			calculate_tex_x(t_game *game, t_ray *ray);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:37:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 17:09:07 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/03 11:16:43 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	raycasting_engine(t_game *game)
 		perform_dda_algorithm(game, &ray);
 		calculate_line_height(&ray, game);
 		determine_wall_texture(&ray);
-		draw_wall_column(game, &ray, column);
+		draw_texture_column(game, &ray, column, calculate_tex_x(game, &ray));
 		column++;
 	}
 	return (0);

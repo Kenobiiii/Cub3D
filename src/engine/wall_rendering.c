@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 19:53:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/03 09:19:56 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/03 11:16:37 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	get_draw_bounds(t_game *game, t_ray *ray, int *start, int *end)
 		*end = game->win_height - 1;
 }
 
-static int	calculate_tex_x(t_game *game, t_ray *ray)
+int	calculate_tex_x(t_game *game, t_ray *ray)
 {
 	int	tex_x;
 
@@ -49,7 +49,7 @@ static void	put_texture_pixel(t_game *game, int x, int y,
 	mlx_put_pixel(game->screen.img, x, y, color);
 }
 
-static void	draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x)
+void	draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x)
 {
 	int					y;
 	int					tex_y;
@@ -73,12 +73,4 @@ static void	draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x)
 		put_texture_pixel(game, x, y, &params);
 		y++;
 	}
-}
-
-void	draw_wall_column(t_game *game, t_ray *ray, int x)
-{
-	int	tex_x;
-
-	tex_x = calculate_tex_x(game, ray);
-	draw_texture_column(game, ray, x, tex_x);
 }
