@@ -6,24 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 20:00:44 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 17:02:42 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/03 09:20:52 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	put_pixel(mlx_image_t *img, int x, int y, int color)
-{
-	int	index;
-
-	if (x < 0 || x >= (int)img->width || y < 0 || y >= (int)img->height)
-		return ;
-	index = (y * img->width + x) * 4;
-	img->pixels[index + 0] = (color >> 24) & 0xFF;
-	img->pixels[index + 1] = (color >> 16) & 0xFF;
-	img->pixels[index + 2] = (color >> 8) & 0xFF;
-	img->pixels[index + 3] = color & 0xFF;
-}
 
 int	get_pixel(mlx_image_t *img, int x, int y)
 {

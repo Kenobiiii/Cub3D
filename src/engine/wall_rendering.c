@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 19:53:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 10:21:56 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/03 09:19:56 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	put_texture_pixel(t_game *game, int x, int y,
 		|| params->tex_y < 0 || params->tex_y >= (int)params->texture->height)
 		return ;
 	color = get_pixel(params->texture->img, params->tex_x, params->tex_y);
-	put_pixel(game->screen.img, x, y, color);
+	mlx_put_pixel(game->screen.img, x, y, color);
 }
 
 static void	draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x)

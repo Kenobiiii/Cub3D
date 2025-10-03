@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 17:13:37 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/03 09:20:47 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,6 @@ void		move_player_safe(t_game *game, float new_x, float new_y);
 void		update_player_rotation(t_game *game);
 
 //! render_basic.c
-void		put_pixel(mlx_image_t *img, int x, int y, int color);
 int			get_pixel(mlx_image_t *img, int x, int y);
 int			create_rgba(int r, int g, int b, int a);
 

@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:11:50 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 18:30:58 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/03 09:19:49 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	draw_floor_ceiling(mlx_image_t *img, int floor_color,
 		while (x < (int)img->width)
 		{
 			if (y < (int)img->height / 2)
-				put_pixel(img, x, y, ceiling_color);
+				mlx_put_pixel(img, x, y, ceiling_color);
 			else
-				put_pixel(img, x, y, floor_color);
+				mlx_put_pixel(img, x, y, floor_color);
 			x++;
 		}
 		y++;
