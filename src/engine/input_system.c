@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:30:48 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/24 20:27:51 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/03 11:29:10 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	update_input(t_game *game)
 	game->input.esc = mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE);
 }
 
-static void	handle_forward_movement(t_game *game)
+void	handle_forward_movement(t_game *game)
 {
 	float	new_x;
 	float	new_y;
@@ -46,7 +46,7 @@ static void	handle_forward_movement(t_game *game)
 	}
 }
 
-static void	handle_strafe_movement(t_game *game)
+void	handle_strafe_movement(t_game *game)
 {
 	float	new_x;
 	float	new_y;
@@ -67,10 +67,4 @@ static void	handle_strafe_movement(t_game *game)
 			* game->player.move_speed;
 		move_player_safe(game, new_x, new_y);
 	}
-}
-
-void	update_player_movement(t_game *game)
-{
-	handle_forward_movement(game);
-	handle_strafe_movement(game);
 }

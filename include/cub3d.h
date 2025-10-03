@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/03 11:16:33 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/03 11:27:54 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,9 @@ void		render_background(t_game *game);
 
 //! Input_system.c
 void		update_input(t_game *game);
-void		update_player_movement(t_game *game);
+void		handle_forward_movement(t_game *game);
+void		handle_strafe_movement(t_game *game);
+
 
 //! Collision_system.c
 void		move_player_safe(t_game *game, float new_x, float new_y);
