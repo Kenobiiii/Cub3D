@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/03 11:27:54 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/06 10:26:52 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ void		handle_strafe_movement(t_game *game);
 
 
 //! Collision_system.c
-void		move_player_safe(t_game *game, float new_x, float new_y);
+void		move_player(t_game *game, float new_x, float new_y);
 void		update_player_rotation(t_game *game);
 
 //! render_basic.c

@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:30:48 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/03 11:29:10 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/06 10:26:52 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	handle_forward_movement(t_game *game)
 			* game->player.move_speed;
 		new_y = game->player.pos.y + game->player.dir.y
 			* game->player.move_speed;
-		move_player_safe(game, new_x, new_y);
+		move_player(game, new_x, new_y);
 	}
 	if (game->input.s)
 	{
@@ -42,7 +42,7 @@ void	handle_forward_movement(t_game *game)
 			* game->player.move_speed;
 		new_y = game->player.pos.y - game->player.dir.y
 			* game->player.move_speed;
-		move_player_safe(game, new_x, new_y);
+		move_player(game, new_x, new_y);
 	}
 }
 
@@ -57,7 +57,7 @@ void	handle_strafe_movement(t_game *game)
 			* game->player.move_speed;
 		new_y = game->player.pos.y - game->player.dir.x
 			* game->player.move_speed;
-		move_player_safe(game, new_x, new_y);
+		move_player(game, new_x, new_y);
 	}
 	if (game->input.d)
 	{
@@ -65,6 +65,6 @@ void	handle_strafe_movement(t_game *game)
 			* game->player.move_speed;
 		new_y = game->player.pos.y + game->player.dir.x
 			* game->player.move_speed;
-		move_player_safe(game, new_x, new_y);
+		move_player(game, new_x, new_y);
 	}
 }

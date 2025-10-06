@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:10:24 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 16:58:20 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/06 10:26:52 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	is_valid_position(t_game *game, float x, float y)
 	return (1);
 }
 
-void	move_player_safe(t_game *game, float new_x, float new_y)
+void	move_player(t_game *game, float new_x, float new_y)
 {
 	float	margin;
 	float	test_x;
