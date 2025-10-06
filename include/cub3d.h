@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/06 10:26:52 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/06 12:21:26 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,15 @@ int			validate_length_rules(int i, int len, t_config *config);
 int			find_first_char(int i, int len, t_config *config);
 int			find_last_char(int i, int len, t_config *config);
 int			validate_internal_spaces(int i, int len, t_config *config);
+
+//! Wall_helpers
+int			flood_fill_check(t_config *config, int i, int j, char **visited);
+int			init_visited_array(t_config *config, char **visited);
+void		free_visited_array(char **visited, int height);
+int			check_border_char(char c, int *result);
+int			check_line_spacing(int only_spaces, int *found_map_content,
+				int *empty_lines_count);
+int			validate_walls_loop(t_config *config, char **visited);
 
 //! Config_utils
 int			validate_path(char *path);

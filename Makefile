@@ -23,6 +23,7 @@ SRCS = src/main.c \
        src/parsing/player_validator.c \
        src/parsing/wall_validator.c \
        src/parsing/wall_utils.c \
+       src/parsing/wall_helpers.c \
        src/parsing/memory_utils.c \
        src/engine/mlx_init.c \
        src/engine/texture_init.c \
