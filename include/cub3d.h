@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/07 11:00:28 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:02:21 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,8 +165,6 @@ int			flood_fill_check(t_config *config, int i, int j, char **visited);
 int			init_visited_array(t_config *config, char **visited);
 void		free_visited_array(char **visited, int height);
 int			check_border_char(char c, int *result);
-int			check_line_spacing(int only_spaces, int *found_map_content,
-				int *empty_lines_count);
 int			validate_walls_loop(t_config *config, char **visited);
 
 //! Config_utils

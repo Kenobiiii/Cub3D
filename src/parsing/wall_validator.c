@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   wall_validator.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/10/06 12:23:57 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:02:11 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	check_line_spacing(int only_spaces, int *found_map_content,
+	int *empty_lines_count)
+{
+	if (only_spaces)
+	{
+		if (*found_map_content)
+			(*empty_lines_count)++;
+	}
+	else
+	{
+		*found_map_content = 1;
+		if (*empty_lines_count > 0)
+		{
+			ft_putstr_fd("Error: Map is not properly closed by walls\n", 2);
+			return (-1);
+		}
+	}
+	return (0);
+}
 
 static int	process_line_content(t_config *config, int i,
 	int *found_map_content, int *empty_lines_count)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/10/06 12:23:57 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:02:03 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,26 +74,6 @@ int	check_border_char(char c, int *result)
 		ft_putstr_fd("Error: Map border must be wall or space\n", 2);
 		*result = -1;
 		return (1);
-	}
-	return (0);
-}
-
-int	check_line_spacing(int only_spaces, int *found_map_content,
-	int *empty_lines_count)
-{
-	if (only_spaces)
-	{
-		if (*found_map_content)
-			(*empty_lines_count)++;
-	}
-	else
-	{
-		*found_map_content = 1;
-		if (*empty_lines_count > 0)
-		{
-			ft_putstr_fd("Error: Map is not properly closed by walls\n", 2);
-			return (-1);
-		}
 	}
 	return (0);
 }
