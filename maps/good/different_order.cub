@@ -1,0 +1,12 @@
+F 220,100,0
+NO ./sprites/N.png
+C 225,30,0
+SO ./sprites/S.png
+WE ./sprites/W.png
+EA ./sprites/E.png
+
+111111
+100001
+10W001
+100001
+111111

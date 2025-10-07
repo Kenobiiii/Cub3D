@@ -1,0 +1,6 @@
+NO ./sprites/N.png
+SO ./sprites/S.png
+WE ./sprites/W.png
+EA ./sprites/E.png
+F 220,100,0
+C 225,30,0
