@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/10/06 12:17:35 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:59:19 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 static int	validate_extension(char *path, int len)
 {
-	if (len < 4 || (ft_strncmp(path + len - 4, ".xpm", 4) != 0
-			&& ft_strncmp(path + len - 4, ".png", 4) != 0))
+	if (len < 4 || ft_strncmp(path + len - 4, ".png", 4) != 0)
 	{
-		ft_putstr_fd("Error: Texture path must end with .xpm or .png\n", 2);
+		ft_putstr_fd("Error: Texture path must end with .png\n", 2);
 		return (-1);
 	}
 	return (0);

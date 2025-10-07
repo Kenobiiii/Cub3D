@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/06 12:23:57 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/07 11:00:28 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,6 @@ void		render_background(t_game *game);
 void		update_input(t_game *game);
 void		handle_forward_movement(t_game *game);
 void		handle_strafe_movement(t_game *game);
-
 
 //! Collision_system.c
 void		move_player(t_game *game, float new_x, float new_y);
