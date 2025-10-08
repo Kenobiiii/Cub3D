@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:11:01 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/30 17:08:54 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/08 08:45:00 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,17 @@ void	calculate_line_height(t_ray *ray, t_game *game)
 	int	line_height;
 
 	if (ray->side == 0)
+	{
 		ray->perp_wall_dist = (ray->side_dist.x - ray->delta_dist.x);
+		ray->wall_x = game->player.pos.y + ray->perp_wall_dist * ray->dir.y;
+	}
 	else
+	{
 		ray->perp_wall_dist = (ray->side_dist.y - ray->delta_dist.y);
+		ray->wall_x = game->player.pos.x + ray->perp_wall_dist * ray->dir.x;
+	}
 	line_height = (int)(game->win_height / ray->perp_wall_dist);
 	ray->draw_start = -line_height / 2 + game->win_height / 2;
 	ray->draw_end = line_height / 2 + game->win_height / 2;
-	if (ray->side == 0)
-		ray->wall_x = game->player.pos.y + ray->perp_wall_dist * ray->dir.y;
-	else
-		ray->wall_x = game->player.pos.x + ray->perp_wall_dist * ray->dir.x;
 	ray->wall_x -= floor(ray->wall_x);
 }
