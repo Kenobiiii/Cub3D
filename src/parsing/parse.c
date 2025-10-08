@@ -6,7 +6,7 @@
 /*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/07/29 14:13:22 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:34:35 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ t_config	parse_file(char *filename)
 {
 	t_config	config;
 	int			fd;
+	char		*line;
 
 	config = init_config();
 	if (validate_file_extension(filename) == -1)
@@ -101,10 +102,14 @@ t_config	parse_file(char *filename)
 		return (config);
 	if (process_file(fd, &config) == -1)
 	{
+		line = get_next_line(fd);
+		while (line)
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
 		close(fd);
-		if (config.map.grid)
-			free_array(config.map.grid);
-		config.map.grid = NULL;
+		free_config(&config);
 		return (config);
 	}
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/10/06 12:17:41 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:34:35 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,21 @@ static int	read_map_lines(int fd, char **map_lines)
 	int		i;
 
 	i = 0;
-	while (1)
+	line = get_next_line(fd);
+	while (line && i < 999)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
 		if (ft_strlen(line) > 0 && line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
-		map_lines[i] = ft_strdup(line);
-		if (!map_lines[i])
-		{
-			free(line);
-			ft_putstr_fd("Error: Memory allocation failed\n", 2);
-			return (-1);
-		}
-		i++;
+		map_lines[i++] = ft_strdup(line);
 		free(line);
+		if (!map_lines[i - 1])
+			return (ft_putstr_fd("Error: Memory allocation failed\n", 2), -1);
+		line = get_next_line(fd);
+	}
+	if (line)
+	{
+		free(line);
+		return (ft_putstr_fd("Error: Map exceeds maximum size\n", 2), -1);
 	}
 	return (i);
 }
@@ -111,6 +110,7 @@ int	read_map(int fd, t_config *config)
 {
 	char	**map_lines;
 	int		height;
+	int		i;
 
 	map_lines = malloc(sizeof(char *) * 1000);
 	if (!map_lines)
@@ -118,6 +118,9 @@ int	read_map(int fd, t_config *config)
 		ft_putstr_fd("Error: Memory allocation failed\n", 2);
 		return (-1);
 	}
+	i = 0;
+	while (i < 1000)
+		map_lines[i++] = NULL;
 	height = read_map_lines(fd, map_lines);
 	if (height == -1)
 	{
