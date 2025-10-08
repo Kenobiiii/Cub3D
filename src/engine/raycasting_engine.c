@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_engine.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:37:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/03 11:16:43 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:08:32 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

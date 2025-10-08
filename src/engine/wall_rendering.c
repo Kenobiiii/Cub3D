@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 19:53:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/03 11:16:37 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:10:58 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x)
 	t_texture_params	params;
 
 	get_draw_bounds(game, ray, &start, &end);
+	if (ray->draw_end == ray->draw_start)
+		return ;
 	y = start;
 	while (y <= end)
 	{

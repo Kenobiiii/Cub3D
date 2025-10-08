@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 13:31:32 by paromero          #+#    #+#             */
-/*   Updated: 2025/08/26 20:20:05 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:59:56 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 	if (init_mlx42(&game) == -1)
 	{
 		ft_putstr_fd("Error: Failed to initialize MLX42\n", 2);
+		free_config(&game.config);
 		return (1);
 	}
 	mlx_loop(game.mlx);

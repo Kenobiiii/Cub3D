@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 18:46:53 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 18:29:33 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:12:15 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ static int	load_single_texture(t_game *game, char *path, int index)
 {
 	mlx_texture_t	*texture;
 
+	if (!path)
+	{
+		ft_putstr_fd("Error: Texture path is NULL\n", 2);
+		return (-1);
+	}
 	texture = mlx_load_png(path);
 	if (!texture)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_dda.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:11:01 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/08 08:45:00 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:04:57 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	perform_dda_algorithm(t_game *game, t_ray *ray)
 		if (ray->map_pos.y < 0.25
 			|| ray->map_pos.x < 0.25
 			|| ray->map_pos.y > game->config.map.height - 0.25
-			|| ray->map_pos.x > game->config.map.width - 1.25)
+			|| ray->map_pos.x > game->config.map.width - 0.25)
 			break ;
 		else if (game->config.map.grid[ray->map_pos.y][ray->map_pos.x] > '0')
 			ray->hit = 1;
@@ -80,6 +80,8 @@ void	calculate_line_height(t_ray *ray, t_game *game)
 		ray->perp_wall_dist = (ray->side_dist.y - ray->delta_dist.y);
 		ray->wall_x = game->player.pos.x + ray->perp_wall_dist * ray->dir.x;
 	}
+	if (ray->perp_wall_dist < 0.001)
+		ray->perp_wall_dist = 0.001;
 	line_height = (int)(game->win_height / ray->perp_wall_dist);
 	ray->draw_start = -line_height / 2 + game->win_height / 2;
 	ray->draw_end = line_height / 2 + game->win_height / 2;
