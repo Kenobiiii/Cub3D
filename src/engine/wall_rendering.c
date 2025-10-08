@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 19:53:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/08 18:10:58 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/08 19:35:21 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	calculate_tex_x(t_game *game, t_ray *ray)
 		tex_x = 0;
 	if (tex_x >= (int)game->textures[ray->tex_num].width)
 		tex_x = game->textures[ray->tex_num].width - 1;
-	if ((ray->side == 0 && ray->dir.x > 0)
-		|| (ray->side == 1 && ray->dir.y < 0))
+	if ((ray->side == 0 && ray->dir.x < 0)
+		|| (ray->side == 1 && ray->dir.y > 0))
 		tex_x = game->textures[ray->tex_num].width - tex_x - 1;
 	return (tex_x);
 }
