@@ -6,7 +6,7 @@
 /*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/10/08 17:34:35 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:44:58 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ static int	process_map_data(char **map_lines, int height, t_config *config)
 	int	i;
 
 	if (height <= 0)
-	{
-		free_array(map_lines);
-		ft_putstr_fd("Error: Empty map\n", 2);
-		return (-1);
-	}
+		return (free_array(map_lines),
+			ft_putstr_fd("Error: Empty map\n", 2), -1);
 	map_lines[height] = NULL;
 	find_max_width(map_lines, height, &max_width);
+	if (max_width > 999)
+		return (free_array(map_lines),
+			ft_putstr_fd("Error: Map width exceeds maximum size\n", 2), -1);
 	i = 0;
 	while (i < height)
 	{
