@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   config_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:00:00 by anggalle          #+#    #+#             */
-/*   Updated: 2025/10/07 10:59:19 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:04:17 by anggalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <sys/stat.h>
 
 static int	validate_extension(char *path, int len)
 {
@@ -23,25 +22,10 @@ static int	validate_extension(char *path, int len)
 	return (0);
 }
 
-static int	validate_file_type(struct stat path_stat)
-{
-	if (S_ISDIR(path_stat.st_mode))
-	{
-		ft_putstr_fd("Error: Texture path is a directory\n", 2);
-		return (-1);
-	}
-	if (!S_ISREG(path_stat.st_mode))
-	{
-		ft_putstr_fd("Error: Texture path is not a regular file\n", 2);
-		return (-1);
-	}
-	return (0);
-}
-
 int	validate_path(char *path)
 {
-	struct stat	path_stat;
-	int			len;
+	int	len;
+	int	fd;
 
 	if (!path || ft_strlen(path) == 0)
 		return (-1);
@@ -53,11 +37,13 @@ int	validate_path(char *path)
 		ft_putstr_fd("Error: Texture path is a directory\n", 2);
 		return (-1);
 	}
-	if (stat(path, &path_stat) == 0)
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
 	{
-		if (validate_file_type(path_stat) == -1)
-			return (-1);
+		ft_putstr_fd("Error: Cannot open texture file\n", 2);
+		return (-1);
 	}
+	close(fd);
 	return (0);
 }
 
