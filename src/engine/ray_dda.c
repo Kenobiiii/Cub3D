@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_dda.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:11:01 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/08 18:04:57 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/09 09:42:38 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ void	perform_dda_algorithm(t_game *game, t_ray *ray)
 			ray->map_pos.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (ray->map_pos.y < 0.25
-			|| ray->map_pos.x < 0.25
-			|| ray->map_pos.y > game->config.map.height - 0.25
-			|| ray->map_pos.x > game->config.map.width - 0.25)
+		if (ray->map_pos.y < 0
+			|| ray->map_pos.x < 0
+			|| ray->map_pos.y > game->config.map.height
+			|| ray->map_pos.x > game->config.map.width)
 			break ;
 		else if (game->config.map.grid[ray->map_pos.y][ray->map_pos.x] > '0')
 			ray->hit = 1;
