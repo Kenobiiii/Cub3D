@@ -36,8 +36,6 @@ static int	init_screen_buffer(t_game *game)
 		mlx_terminate(game->mlx);
 		return (-1);
 	}
-	game->screen.width = game->win_width;
-	game->screen.height = game->win_height;
 	if (mlx_image_to_window(game->mlx, game->screen.img, 0, 0) == -1)
 	{
 		ft_putstr_fd("Error: Failed to display screen buffer\n", 2);
