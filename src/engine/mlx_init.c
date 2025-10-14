@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:36:04 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/24 16:46:45 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/14 18:09:45 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	init_mlx42(t_game *game)
 		return (-1);
 	}
 	init_player(game);
-	render_background(game);
 	mlx_loop_hook(game->mlx, game_update, game);
 	printf("✅ MLX42 initialized successfully!\n");
 	return (0);
