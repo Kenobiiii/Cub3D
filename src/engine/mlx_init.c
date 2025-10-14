@@ -6,7 +6,7 @@
 /*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:36:04 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/14 18:09:45 by pablo            ###   ########.fr       */
+/*   Updated: 2025/10/14 18:18:28 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	init_mlx42(t_game *game)
 		return (-1);
 	if (init_screen_buffer(game) == -1)
 		return (-1);
-	mlx_key_hook(game->mlx, handle_keypress, game);
+	//mlx_key_hook(game->mlx, handle_keypress, game);
 	mlx_close_hook(game->mlx, handle_close, game);
 	if (load_textures(game) == -1)
 	{

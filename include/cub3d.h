@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/07 11:02:21 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/14 18:40:51 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,12 +200,9 @@ void		render_background(t_game *game);
 
 //! Input_system.c
 void		update_input(t_game *game);
-void		handle_forward_movement(t_game *game);
-void		handle_strafe_movement(t_game *game);
 
 //! Collision_system.c
 void		move_player(t_game *game, float new_x, float new_y);
-void		update_player_rotation(t_game *game);
 
 //! render_basic.c
 int			get_pixel(mlx_image_t *img, int x, int y);

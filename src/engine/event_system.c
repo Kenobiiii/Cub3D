@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_system.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:10:44 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/03 11:29:04 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/14 18:39:09 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ void	game_update(void *param)
 	update_input(game);
 	if (game->input.esc)
 		close_game(game);
-	handle_forward_movement(game);
-	handle_strafe_movement(game);
-	update_player_rotation(game);
 	render_background(game);
 	raycasting_engine(game);
 }

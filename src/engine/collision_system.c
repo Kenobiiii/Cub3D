@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision_system.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:10:24 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/06 10:26:52 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/14 18:39:53 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,4 @@ void	move_player(t_game *game, float new_x, float new_y)
 		game->player.pos.x = new_x;
 	if (is_valid_position(game, game->player.pos.x, test_y))
 		game->player.pos.y = new_y;
-}
-
-static void	rotate_vectors(t_vector2f *dir, t_vector2f *fov, float angle)
-{
-	float	old_dir_x;
-	float	old_fov_x;
-
-	old_dir_x = dir->x;
-	dir->x = dir->x * cos(angle) - dir->y * sin(angle);
-	dir->y = old_dir_x * sin(angle) + dir->y * cos(angle);
-	old_fov_x = fov->x;
-	fov->x = fov->x * cos(angle) - fov->y * sin(angle);
-	fov->y = old_fov_x * sin(angle) + fov->y * cos(angle);
-}
-
-void	update_player_rotation(t_game *game)
-{
-	if (game->input.left)
-		rotate_vectors(&game->player.dir, &game->player.fov,
-			-game->player.rot_speed);
-	if (game->input.right)
-		rotate_vectors(&game->player.dir, &game->player.fov,
-			game->player.rot_speed);
 }
