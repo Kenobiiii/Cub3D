@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_system.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:30:48 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/14 18:40:28 by pablo            ###   ########.fr       */
+/*   Updated: 2025/10/15 10:46:28 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void	update_input(t_game *game)
 	game->input.d = mlx_is_key_down(game->mlx, MLX_KEY_D);
 	game->input.left = mlx_is_key_down(game->mlx, MLX_KEY_LEFT);
 	game->input.right = mlx_is_key_down(game->mlx, MLX_KEY_RIGHT);
-	game->input.esc = mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+		close_game(game);
 	handle_forward_movement(game);
 	handle_strafe_movement(game);
 	update_player_rotation(game);

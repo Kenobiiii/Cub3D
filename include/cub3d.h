@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/14 18:40:51 by pablo            ###   ########.fr       */
+/*   Updated: 2025/10/15 10:46:37 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ typedef struct s_input
 	int	d;
 	int	left;
 	int	right;
-	int	esc;
 }	t_input;
 
 typedef struct s_player
@@ -184,7 +183,6 @@ int			init_mlx42(t_game *game);
 int			close_game(t_game *game);
 
 //! event_system.c
-void		handle_keypress(mlx_key_data_t keydata, void *param);
 void		handle_close(void *param);
 void		game_update(void *param);
 
