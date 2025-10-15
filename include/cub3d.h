@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/15 10:46:37 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/15 10:59:56 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,6 @@ typedef struct s_ray
 	int			draw_end;		//! When did end
 }	t_ray;
 
-typedef struct s_input
-{
-	int	w;
-	int	s;
-	int	a;
-	int	d;
-	int	left;
-	int	right;
-}	t_input;
-
 typedef struct s_player
 {
 	t_vector2f	pos;
@@ -124,7 +114,6 @@ typedef struct s_game
 	t_player	player;
 	t_texture	textures[4];
 	t_ray		ray;
-	t_input		input;
 	int			win_width;
 	int			win_height;	
 }	t_game;
