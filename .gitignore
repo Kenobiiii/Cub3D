@@ -8,3 +8,6 @@ MLX/build/
 cub3D
 *.a
 *.o
+
+# log de errores
+error.log
