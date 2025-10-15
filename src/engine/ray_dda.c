@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 18:11:01 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/09 09:42:38 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/15 11:17:01 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	calculate_line_height(t_ray *ray, t_game *game)
 	}
 	if (ray->perp_wall_dist < 0.001)
 		ray->perp_wall_dist = 0.001;
-	line_height = (int)(game->win_height / ray->perp_wall_dist);
-	ray->draw_start = -line_height / 2 + game->win_height / 2;
-	ray->draw_end = line_height / 2 + game->win_height / 2;
+	line_height = (int)(WINDOW_HEIGHT / ray->perp_wall_dist);
+	ray->draw_start = -line_height / 2 + WINDOW_HEIGHT / 2;
+	ray->draw_end = line_height / 2 + WINDOW_HEIGHT / 2;
 	ray->wall_x -= floor(ray->wall_x);
 }

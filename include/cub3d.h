@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 09:46:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/15 10:59:56 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/15 11:18:51 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ typedef struct s_game
 	t_player	player;
 	t_texture	textures[4];
 	t_ray		ray;
-	int			win_width;
-	int			win_height;	
 }	t_game;
 
 //DONE Parsing functions

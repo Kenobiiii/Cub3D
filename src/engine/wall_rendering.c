@@ -6,20 +6,20 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 19:53:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/08 19:35:21 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/15 11:17:45 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	get_draw_bounds(t_game *game, t_ray *ray, int *start, int *end)
+static void	get_draw_bounds(t_ray *ray, int *start, int *end)
 {
 	*start = ray->draw_start;
 	if (*start < 0)
 		*start = 0;
 	*end = ray->draw_end;
-	if (*end >= game->win_height)
-		*end = game->win_height - 1;
+	if (*end >= WINDOW_HEIGHT)
+		*end = WINDOW_HEIGHT - 1;
 }
 
 int	calculate_tex_x(t_game *game, t_ray *ray)
@@ -57,7 +57,7 @@ void	draw_texture_column(t_game *game, t_ray *ray, int x, int tex_x)
 	int					end;
 	t_texture_params	params;
 
-	get_draw_bounds(game, ray, &start, &end);
+	get_draw_bounds(ray, &start, &end);
 	if (ray->draw_end == ray->draw_start)
 		return ;
 	y = start;

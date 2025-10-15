@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_engine.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anggalle <anggalle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 19:37:09 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/08 18:08:32 by anggalle         ###   ########.fr       */
+/*   Updated: 2025/10/15 11:17:24 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	init_ray_data(t_ray *ray)
 static void	init_raycasting_info(int x, t_ray *ray, t_game *game)
 {
 	init_ray_data(ray);
-	ray->camera_x = 2 * x / (double)game->win_width - 1;
+	ray->camera_x = 2 * x / (double)WINDOW_WIDTH - 1;
 	ray->dir.x = game->player.dir.x + game->player.fov.x * ray->camera_x;
 	ray->dir.y = game->player.dir.y + game->player.fov.y * ray->camera_x;
 	ray->map_pos.x = (int)game->player.pos.x;
@@ -67,7 +67,7 @@ int	raycasting_engine(t_game *game)
 	int		column;
 
 	column = 0;
-	while (column < game->win_width)
+	while (column < WINDOW_WIDTH)
 	{
 		init_raycasting_info(column, &ray, game);
 		set_dda_params(&ray, game);

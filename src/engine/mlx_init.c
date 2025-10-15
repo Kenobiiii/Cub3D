@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:36:04 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/15 10:45:08 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/15 11:18:55 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 static int	init_mlx_window(t_game *game)
 {
-	game->win_width = WINDOW_WIDTH;
-	game->win_height = WINDOW_HEIGHT;
-	game->mlx = mlx_init(game->win_width, game->win_height,
+	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT,
 			WINDOW_TITLE, false);
 	if (!game->mlx)
 	{
@@ -29,7 +27,7 @@ static int	init_mlx_window(t_game *game)
 static int	init_screen_buffer(t_game *game)
 {
 	game->screen.img = mlx_new_image(game->mlx,
-			game->win_width, game->win_height);
+			WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!game->screen.img)
 	{
 		ft_putstr_fd("Error: Failed to create screen buffer\n", 2);
